@@ -2,7 +2,7 @@
 <html>
   <body>
 
-    <h1 color= red>Cookie Clicker!</h1>
+    <h1>Cookie Clicker!</h1>
 
     <button id="Baker" onclick="addCookies()">Bake</button>
 
@@ -16,7 +16,7 @@
 
     <p id="cookiesYouNeedToGet"></p>
 
-    <p id="TMP"></p>
+    <p id="x5"></p>
 
     <p id="howManyYouGet"></p>
 
@@ -26,10 +26,12 @@
 
     <p id="numberOfGrandmas"></p>
 
+    <p id="randomNumber"></p>
+
     <script>
 
 
-//TODO: make it so that every so often you can find more or less cookies per click. Also you can find treasure chests.
+//TODO: Make it so that you can find treasure chests.
 var cookies = 1;
 var cookiesPerClick = 1;
 var cost = 2;
@@ -42,7 +44,8 @@ var numGrandma = 0;
 var grandmaCost = 1000;
 var cookiesUntilUpgrade;
 
-  document.getElementById("Baker").style.background='#ffa500';
+  document.getElementById("Baker").style.background='#925800';
+  document.getElementById("Baker").style.color='#302208';
   document.getElementById("addAdd").style.background='#ff0000';
   document.getElementById("BuyGrandma").style.background='#ff0000';
 
@@ -72,19 +75,32 @@ function testChances() {
 
     if (randomNumber == 2) {
       cookies = cookies * 5
+      sayYouGotCookies();
     }
 
 }
 
 
+function sayYouGotCookies() {
+    document.getElementById("x5").innerHTML = "You just got 5 times the amount of cookies!"
+    document.getElementById("x5").style.color='#915e00';
+  setTimeout(function(){
+    document.getElementById("x5").innerHTML = ""
+  }, 5000);
+
+
+}
+
+
+
 function updateDisplay() {
 
-  
-    document.getElementById("numberOfCookies").innerHTML = "You have " + cookies + " cookies!";
-  document.getElementById("cookiesPerGrandma").innerHTML = "You have " + numGrandma + " Grandmas!"
-    document.getElementById("cookiesYouNeedToPay").innerHTML = "You need to pay " + cost + " cookies to upgrade cookies per click!";
-  document.getElementById("costOfGrandma").innerHTML = "You need to pay " + grandmaCost + " cookies for a grandma!"
-    document.getElementById("howManyYouGet").innerHTML = "You get " + cookiesPerClick + " cookies per click!"
+
+  document.getElementById("numberOfCookies").innerHTML = "You have " + cookies + " cookies!";
+  document.getElementById("cookiesPerGrandma").innerHTML = "You have " + numGrandma + " Grandmas!";
+  document.getElementById("cookiesYouNeedToPay").innerHTML = "You need to pay " + cost + " cookies to upgrade cookies per click!";
+  document.getElementById("costOfGrandma").innerHTML = "You need to pay " + grandmaCost + " cookies for a grandma!";
+  document.getElementById("howManyYouGet").innerHTML = "You get " + cookiesPerClick + " cookies per click!";
 
 
   if (cookies >= cost){
