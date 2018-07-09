@@ -1,20 +1,55 @@
 <!DOCTYPE html>
 <html>
+  <style>
+
+h1 {
+    text-align: center;
+
+}
+
+button {
+  padding-left: 50px;
+  padding-right: 50px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-radius: 10px;
+  display: block;
+  margin: auto;
+
+}
+
+#Baker {
+  margin: auto;
+  vertical-align: middle;
+
+}
+
+  </style>
+
   <body>
+
+    <p> <a href="/AWS-Website/clicker.html">Play BakeBread!</a> See more talent at the website of the <a
+      href="http://bentitus13.com">Creator of BakeBread!</a> </p>
 
     <h1>Cookie Clicker!</h1>
 
-    <div style="height:200px;">
+    <div style="height:300px;">
 
       <img id="Baker" src="/cookie.png" onclick="addCookies()"/>
+
+    </div>
+
+    <div id="buttonsAndText">
+
+      <p id="numberOfCookies">You have 0 cookies!</p>
+
+      <p id="cookiesYouNeedToPay">You need to pay 2 cookies to upgrade cookies per click!</p>
 
     </div>
 
     <button id="addAdd" onclick="moreCookiesPerClick()">Increase cookies per click</button>
 
     <button id="BuyGrandma" onclick="addGrandma()">Buy a Grandma!</button>
-
-    <p id="numberOfCookies"></p>
 
     <p id="cookiesYouNeedToPay"></p>
 
@@ -38,7 +73,7 @@
 
 
 //TODO: Make it so that you can find treasure chests.
-var cookies = 1;
+var cookies = 0;
 var cookiesPerClick = 1;
 var cost = 2;
 var add = 2
@@ -50,12 +85,14 @@ var numGrandma = 0;
 var grandmaCost = 1000;
 var cookiesUntilUpgrade = cost - cookies;
 
-document.getElementById("Baker").style.height='200px';
+document.getElementById("Baker").style.height='300px';
 document.getElementById("addAdd").style.height='100px';
 document.getElementById("BuyGrandma").style.height='100px';
 document.getElementById("BuyGrandma").style.background='#000000';
 document.getElementById("BuyGrandma").style.color='#000000';
 document.getElementById("addAdd").style.background='#ff0000';
+
+updateDisplay();
 
 
 function getNextFibonacci() {
@@ -68,12 +105,12 @@ function getNextFibonacci() {
 
 function getFibonacciByNumber(num) {
   if(num == 1){
-    return 0;
-  }
-  if(num == 2){
     return 1;
   }
-  return getFibonacciByNumber(num) + getFibonacciByNumber(num-1);
+  if(num == 2){
+    return 2;
+  }
+  return getFibonacciByNumber(num-1) + getFibonacciByNumber(num-2);
 
 }
 
@@ -125,33 +162,37 @@ function updateDisplay() {
   document.getElementById("cookiesYouNeedToPay").innerHTML = "You need to pay " + cost + " cookies to upgrade cookies per click!";
   document.getElementById("costOfGrandma").innerHTML = "You need to pay " + grandmaCost + " cookies for a grandma!";
   document.getElementById("howManyYouGet").innerHTML = "You get " + cookiesPerClick + " cookies per click!";
-  document.getElementById("addAdd").innerHTML = "Increase cookies per click <br/> You need " + (cookies - cost) +" cookies"
+  document.getElementById("addAdd").innerHTML = "Increase cookies per click <br/> You need " + (cost - cookies) +" cookies"
 
-  if (cookies >= cost){
-    document.getElementById("addAdd").style.background='#00ff00';
-  }
-  else{
-    document.getElementById("addAdd").style.background='#ff0000';
-  }
+    if (cookies >= cost){
+      document.getElementById("addAdd").style.background='#00ff00';
+    }
+    else{
+      document.getElementById("addAdd").style.background='#ff0000';
+    }
 
 
 
   if (cookies >= grandmaCost){
     document.getElementById("BuyGrandma").style.background='#00ff00';
-  }
-  else{
-    document.getElementById("BuyGrandma").style.background='#000000';
-  }
 
-
-  if (cost > cookies) {
-    document.getElementById("cookiesYouNeedToGet").innerHTML = "You need to get " + cookiesUntilUpgrade + " cookies until you can upgrade!"
   }
   else {
-
-    document.getElementById("cookiesYouNeedToGet").innerHTML = "You can upgrade now because you have enough cookies!"
-
+    document.getElementById("BuyGrandma").style.background='#ff0000'
   }
+
+  if((isGrandmaRunning == 0) && (cookies <= grandmaCost)){
+    document.getElementById("BuyGrandma").style.background='#000000'
+  }
+
+  //if (cost > cookies) {
+  //document.getElementById("cookiesYouNeedToGet").innerHTML = "You need to get " + cookiesUntilUpgrade + " cookies until you can upgrade!"
+  //}
+  //else {
+
+  //document.getElementById("cookiesYouNeedToGet").innerHTML = "You can upgrade now because you have enough cookies!"
+
+  //}
 
 }
 
@@ -190,9 +231,9 @@ function addGrandma() {
 
 function addCookies() {
   cookies = cookies + cookiesPerClick;
-  document.getElementById("Baker").style.height='190px';
+  document.getElementById("Baker").style.height='290px';
   setTimeout(function(){
-    document.getElementById("Baker").style.height='200px';
+    document.getElementById("Baker").style.height='300px';
   }, 100);
   updateDisplay();
   testChances();
