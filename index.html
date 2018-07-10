@@ -3,9 +3,38 @@
   <style>
 
 h1 {
-    text-align: center;
+  text-align: center;
 
 }
+
+#CookieDiv {
+  height: 300px;
+  width: 50%;
+  margin: auto;
+  text-align: center;
+
+}
+
+#BreadBaker {
+  position: absolute;
+  bottom: 0;
+}
+
+
+#Baker {
+  margin: auto;
+  vertical-align: middle;
+
+}
+
+
+#buttonsAndText {
+  margin: auto;
+  width: 50%;
+  text-align: center;
+
+}
+
 
 button {
   padding-left: 50px;
@@ -19,21 +48,24 @@ button {
 }
 
 #Baker {
-  margin: auto;
-  vertical-align: middle;
-
+  margin-left: auto;
+  margin-right: auto;
 }
 
   </style>
 
   <body>
 
-    <p> <a href="/AWS-Website/clicker.html">Play BakeBread!</a> See more talent at the website of the <a
-      href="http://bentitus13.com">Creator of BakeBread!</a> </p>
+    <div id="BreadBaker">
+
+      <p> <a href="/AWS-Website/clicker.html">Play BakeBread,</a> a parody of cookie clicker! Also, see more talent at the website of the <a
+             href="http://bentitus13.com">Creator of BakeBread!</a> </p>
+
+    </div>
 
     <h1>Cookie Clicker!</h1>
 
-    <div style="height:300px;">
+    <div id="CookieDiv">
 
       <img id="Baker" src="/cookie.png" onclick="addCookies()"/>
 
@@ -44,6 +76,10 @@ button {
       <p id="numberOfCookies">You have 0 cookies!</p>
 
       <p id="cookiesYouNeedToPay">You need to pay 2 cookies to upgrade cookies per click!</p>
+
+      <p id="howManyYouGet">You get 1 cookie per click!</p>
+
+      <p id="cookiesPerGrandma">You have 0 grandmas!</p>
 
     </div>
 
@@ -86,11 +122,9 @@ var grandmaCost = 1000;
 var cookiesUntilUpgrade = cost - cookies;
 
 document.getElementById("Baker").style.height='300px';
-document.getElementById("addAdd").style.height='100px';
-document.getElementById("BuyGrandma").style.height='100px';
 document.getElementById("BuyGrandma").style.background='#000000';
 document.getElementById("BuyGrandma").style.color='#000000';
-document.getElementById("addAdd").style.background='#ff0000';
+document.getElementById("addAdd").style.background='#CCCCCC';
 
 updateDisplay();
 
@@ -151,6 +185,7 @@ function sayYouGotCookies() {
 
 function updateDisplay() {
 
+
   //  document.getElementById("TMP").innerHTML = String()process.cwd()
   if (cookies == 1) {
     document.getElementById("numberOfCookies").innerHTML = "You have 1 cookie!"
@@ -160,25 +195,25 @@ function updateDisplay() {
   }
   document.getElementById("cookiesPerGrandma").innerHTML = "You have " + numGrandma + " Grandmas!";
   document.getElementById("cookiesYouNeedToPay").innerHTML = "You need to pay " + cost + " cookies to upgrade cookies per click!";
-  document.getElementById("costOfGrandma").innerHTML = "You need to pay " + grandmaCost + " cookies for a grandma!";
+  document.getElementById("BuyGrandma").innerHTML = "Buy a grandma! <br/> You need to pay " + grandmaCost + " cookies!";
   document.getElementById("howManyYouGet").innerHTML = "You get " + cookiesPerClick + " cookies per click!";
-  document.getElementById("addAdd").innerHTML = "Increase cookies per click <br/> You need " + (cost - cookies) +" cookies"
+  //document.getElementById("addAdd").innerHTML = "Increase cookies per click <br/> You need " + (cost - cookies) +" cookies"
 
-    if (cookies >= cost){
-      document.getElementById("addAdd").style.background='#00ff00';
-    }
-    else{
-      document.getElementById("addAdd").style.background='#ff0000';
-    }
+  if (cookies >= cost){
+    document.getElementById("addAdd").style.background='#ff7f00';
+  }
+  else{
+    document.getElementById("addAdd").style.background='#CCCCCC';
+  }
 
 
 
   if (cookies >= grandmaCost){
-    document.getElementById("BuyGrandma").style.background='#00ff00';
+    document.getElementById("BuyGrandma").style.background='#ff7f00';
 
   }
   else {
-    document.getElementById("BuyGrandma").style.background='#ff0000'
+    document.getElementById("BuyGrandma").style.background='#CCCCCC'
   }
 
   if((isGrandmaRunning == 0) && (cookies <= grandmaCost)){
@@ -199,7 +234,7 @@ function updateDisplay() {
 function runGrandma() {
 
   setTimeout(function(){
-    cookies = Math.round(cookies + (numGrandma * (cookiesPerClick * 0.01)));
+    cookies = Math.round(cookies + (numGrandma * (cookiesPerClick * 0.1)));
     runGrandma();
     updateDisplay();
     testChancesGrandma();
