@@ -17,9 +17,13 @@ h1 {
 
 #BreadBaker {
   position: absolute;
-  bottom: 0;
+  bottom: 20px;
 }
 
+#BenWebsite {
+  position: absolute;
+  bottom: 0;
+}
 
 #Baker {
   margin: auto;
@@ -35,16 +39,28 @@ h1 {
 
 }
 
+#SideButtons {
+  position: absolute;
+  top: 0px;
+  right: 30px;
+
+}
+
+#BuyFarm {
+  position: relative;
+  top: 30px;
+
+}
 
 button {
-  padding-left: 50px;
-  padding-right: 50px;
+  padding-left: 35px;
+  padding-right: 35px;
   padding-top: 10px;
   padding-bottom: 10px;
-  border-radius: 10px;
+  border-radius: 30px;
   display: block;
   margin: auto;
-
+  border-color: #ff7f00;
 }
 
 #Baker {
@@ -58,12 +74,18 @@ button {
 
     <div id="BreadBaker">
 
-      <p> <a href="/AWS-Website/clicker.html">Play BakeBread,</a> a parody of cookie clicker! Also, see more talent at the website of the <a
-             href="http://bentitus13.com">Creator of BakeBread!</a> </p>
+      <p> <a href="/AWS-Website/clicker.html">Play BakeBread, a parody of cookie clicker!</a> </p>
 
     </div>
 
-    <h1>Cookie Clicker!</h1>
+    <div id="BenWebsite">
+
+      <p> <a href="http://bentitus13.com/">Also, see more talent at the website of the creator of BakeBread!</a> </p>
+
+    </div>
+
+
+    <h1 style="color:red;">Cookie Clicker!</h1>
 
     <div id="CookieDiv">
 
@@ -75,17 +97,25 @@ button {
 
       <p id="numberOfCookies">You have 0 cookies!</p>
 
-      <p id="cookiesYouNeedToPay">You need to pay 2 cookies to upgrade cookies per click!</p>
-
       <p id="howManyYouGet">You get 1 cookie per click!</p>
 
-      <p id="cookiesPerGrandma">You have 0 grandmas!</p>
+      <p id="cookiesPerGrandma"></p>
+
+      <p id="howManyFarms"></p>
 
     </div>
 
     <button id="addAdd" onclick="moreCookiesPerClick()">Increase cookies per click</button>
 
-    <button id="BuyGrandma" onclick="addGrandma()">Buy a Grandma!</button>
+    <div id="SideButtons">
+
+      <h1 style="color:#f442e2;">Get auto bakers!</h1>
+
+      <button id="BuyGrandma" onclick="addGrandma()">Buy a Grandma!</button>
+
+      <button id="BuyFarm" onclick="addFarm()">Buy a farm!</button>
+
+    </div>
 
     <p id="cookiesYouNeedToPay"></p>
 
@@ -118,15 +148,31 @@ var fibonacci2 = 0;
 var currentFibonacci;
 var isGrandmaRunning = 0;
 var numGrandma = 0;
-var grandmaCost = 1000;
+var grandmaCost = 10;
 var cookiesUntilUpgrade = cost - cookies;
+var shownButton = 0;
+var farmCost = 40
+var numFarm = 0
+var isFarmRunning = 0
 
 document.getElementById("Baker").style.height='300px';
 document.getElementById("BuyGrandma").style.background='#000000';
 document.getElementById("BuyGrandma").style.color='#000000';
 document.getElementById("addAdd").style.background='#CCCCCC';
+document.getElementById("addAdd").style.visibility='hidden';
+document.body.style.backgroundColor = "#000000";
 
 updateDisplay();
+callUpdateDisplay();
+
+function callUpdateDisplay() {
+updateDisplay();
+  setTimeout(function(){
+    callUpdateDisplay();
+  }, 50);
+
+
+}
 
 
 function getNextFibonacci() {
@@ -159,12 +205,13 @@ function testChancesGrandma() {
 
 }
 
+
 function testChances() {
 
   var randomNumber = Math.floor(Math.random()*1000)
 
     if (randomNumber == 2) {
-      cookies = cookies * 5
+      cookies = cookies * 2
         sayYouGotCookies();
     }
 
@@ -172,7 +219,7 @@ function testChances() {
 
 
 function sayYouGotCookies() {
-  document.getElementById("x5").innerHTML = "You just got 5 times the amount of cookies!"
+  document.getElementById("x5").innerHTML = "You just got 2 times the amount of cookies!"
     document.getElementById("x5").style.color='#915e00';
   setTimeout(function(){
     document.getElementById("x5").innerHTML = ""
@@ -193,10 +240,15 @@ function updateDisplay() {
   else {
     document.getElementById("numberOfCookies").innerHTML = "You have " + cookies + " cookies!";
   }
+  document.getElementById("numberOfCookies").style.color = "#429ef4";
   document.getElementById("cookiesPerGrandma").innerHTML = "You have " + numGrandma + " Grandmas!";
-  document.getElementById("cookiesYouNeedToPay").innerHTML = "You need to pay " + cost + " cookies to upgrade cookies per click!";
+  document.getElementById("cookiesPerGrandma").style.color = "#429ef4";
   document.getElementById("BuyGrandma").innerHTML = "Buy a grandma! <br/> You need to pay " + grandmaCost + " cookies!";
+  document.getElementById("BuyFarm").innerHTML = "Buy a farm! <br/> You need to pay " + farmCost + " cookies!";
   document.getElementById("howManyYouGet").innerHTML = "You get " + cookiesPerClick + " cookies per click!";
+  document.getElementById("howManyYouGet").style.color = "#429ef4";
+  document.getElementById("howManyFarms").innerHTML = "You have " + numFarm + " Farms!"
+  document.getElementById("howManyFarms").style.color = "#429ef4"
   //document.getElementById("addAdd").innerHTML = "Increase cookies per click <br/> You need " + (cost - cookies) +" cookies"
 
   if (cookies >= cost){
@@ -220,6 +272,24 @@ function updateDisplay() {
     document.getElementById("BuyGrandma").style.background='#000000'
   }
 
+
+
+
+
+  if (cookies >= farmCost){
+    document.getElementById("BuyFarm").style.background='#ff7f00';
+
+  }
+  else {
+    document.getElementById("BuyFarm").style.background='#CCCCCC'
+  }
+
+  if((isFarmRunning == 0) && (cookies <= farmCost)){
+    document.getElementById("BuyFarm").style.background='#000000'
+  }
+
+
+
   //if (cost > cookies) {
   //document.getElementById("cookiesYouNeedToGet").innerHTML = "You need to get " + cookiesUntilUpgrade + " cookies until you can upgrade!"
   //}
@@ -234,11 +304,11 @@ function updateDisplay() {
 function runGrandma() {
 
   setTimeout(function(){
-    cookies = Math.round(cookies + (numGrandma * (cookiesPerClick * 0.1)));
+    cookies = Math.round(cookies + (numGrandma * 1));
     runGrandma();
     updateDisplay();
     testChancesGrandma();
-  }, 100);
+  }, 10000);
 
 
 }
@@ -250,11 +320,15 @@ function addGrandma() {
       //Increase something or other
       numGrandma = numGrandma + 1
         cookies = cookies - grandmaCost;
-      grandmaCost = 10000*getFibonacciByNumber(numGrandma);
+      grandmaCost = Math.round(1.15*grandmaCost);
+      document.getElementById("cookiesPerGrandma").innerHTML = "You have " + numGrandma + " grandmas!"
     }
     else{
       runGrandma();
       isGrandmaRunning = 1
+      numGrandma = 1
+      cookies = cookies - grandmaCost
+      grandmaCost = Math.round(1.15*grandmaCost);
     }
     updateDisplay();
 
@@ -263,6 +337,34 @@ function addGrandma() {
 
 }
 
+function addFarm() {
+  if (cookies >= farmCost) {
+    if(isFarmRunning == 1){
+      numFarm = numFarm + 1
+      cookies = cookies - farmCost;
+      farmCost = Math.round(1.15*farmCost);
+      updateDisplay();
+      document.getElementById("howManyFarms").innerHTML = "You have " + numFarm + " Farms!"
+    }
+    else{
+      runFarm();
+      isFarmRunning = 1
+      numFarm = 1
+      cookies = cookies - farmCost
+      farmCost = Math.round(1.15*farmCost);
+      updateDisplay();
+    }
+  }
+}
+
+function runFarm() {
+
+  setTimeout(function(){
+  cookies = Math.round(cookies + (numFarm * 1))
+  updateDisplay();
+  runFarm();
+  }, 1000);
+}
 
 function addCookies() {
   cookies = cookies + cookiesPerClick;
@@ -272,17 +374,14 @@ function addCookies() {
   }, 100);
   updateDisplay();
   testChances();
+  testCookiesPerClick();
+
+
+
 }
+
 function moreCookiesPerClick() {
-  if (cookies >= cost) {
-    cookiesPerClick = cookiesPerClick + add;
-
-    cookies = cookies - cost;
-    add = add + 2
-      cost = getNextFibonacci();
-    updateDisplay();
-
-  }
+  hello
 }
     </script>
 
