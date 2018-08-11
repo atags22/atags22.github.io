@@ -46,9 +46,15 @@ h1 {
 
 }
 
+#BuyMine {
+  position: relative;
+  top: 20px;
+
+}
+
 #BuyFarm {
   position: relative;
-  top: 30px;
+  top: 10px;
 
 }
 
@@ -103,6 +109,8 @@ button {
 
       <p id="howManyFarms"></p>
 
+      <p id="howManyMines"></p>
+
     </div>
 
     <button id="addAdd" onclick="moreCookiesPerClick()">Increase cookies per click</button>
@@ -114,6 +122,8 @@ button {
       <button id="BuyGrandma" onclick="addGrandma()">Buy a Grandma!</button>
 
       <button id="BuyFarm" onclick="addFarm()">Buy a farm!</button>
+
+      <button id="BuyMine" onclick="addMine()">Buy a Mine!</button>
 
     </div>
 
@@ -146,14 +156,22 @@ var add = 2
 var fibonacci1 = 1;
 var fibonacci2 = 0;
 var currentFibonacci;
+
+var cookiesUntilUpgrade = cost - cookies;
+var shownButton = 0;
+
 var isGrandmaRunning = 0;
 var numGrandma = 0;
 var grandmaCost = 10;
-var cookiesUntilUpgrade = cost - cookies;
-var shownButton = 0;
-var farmCost = 40
-var numFarm = 0
+
 var isFarmRunning = 0
+var numFarm = 0
+var farmCost = 100
+
+var isMineRunning = 0
+var numMine = 0
+var mineCost = 1100
+
 
 document.getElementById("Baker").style.height='300px';
 document.getElementById("BuyGrandma").style.background='#000000';
@@ -245,10 +263,13 @@ function updateDisplay() {
   document.getElementById("cookiesPerGrandma").style.color = "#429ef4";
   document.getElementById("BuyGrandma").innerHTML = "Buy a grandma! <br/> You need to pay " + grandmaCost + " cookies!";
   document.getElementById("BuyFarm").innerHTML = "Buy a farm! <br/> You need to pay " + farmCost + " cookies!";
+  document.getElementById("BuyMine").innerHTML = "Buy a mine! <br/> You need to pay " + mineCost + " cookies!";
   document.getElementById("howManyYouGet").innerHTML = "You get " + cookiesPerClick + " cookies per click!";
   document.getElementById("howManyYouGet").style.color = "#429ef4";
   document.getElementById("howManyFarms").innerHTML = "You have " + numFarm + " Farms!"
   document.getElementById("howManyFarms").style.color = "#429ef4"
+  document.getElementById("howManyMines").innerHTML = "You have " + numMine + " Mines!"
+  document.getElementById("howManyMines").style.color = "#429ef4"
   //document.getElementById("addAdd").innerHTML = "Increase cookies per click <br/> You need " + (cost - cookies) +" cookies"
 
   if (cookies >= cost){
@@ -288,6 +309,20 @@ function updateDisplay() {
     document.getElementById("BuyFarm").style.background='#000000'
   }
 
+
+
+
+  if (cookies >= mineCost){
+    document.getElementById("BuyMine").style.background='#ff7f00';
+
+  }
+  else {
+    document.getElementById("BuyMine").style.background='#CCCCCC'
+  }
+
+  if((isMineRunning == 0) && (cookies <= mineCost)){
+    document.getElementById("BuyMine").style.background='#000000'
+  }
 
 
   //if (cost > cookies) {
@@ -365,6 +400,43 @@ function runFarm() {
   runFarm();
   }, 1000);
 }
+
+
+
+
+
+
+
+
+function addMine() {
+  if (cookies >= mineCost) {
+    if(isMineRunning == 1){
+      numMine = numMine + 1
+      cookies = cookies - mineCost;
+      mineCost = Math.round(1.15*mineCost);
+      updateDisplay();
+      document.getElementById("howManyMines").innerHTML = "You have " + numMine + " Mines!"
+    }
+    else{
+      runMine();
+      isMineRunning = 1
+      numMine = 1
+      cookies = cookies - mineCost
+      mineCost = Math.round(1.15*mineCost);
+      updateDisplay();
+    }
+  }
+}
+
+function runMine() {
+
+  setTimeout(function(){
+  cookies = Math.round(cookies + (numMine * 1))
+  updateDisplay();
+  runMine();
+  }, 125);
+}
+
 
 function addCookies() {
   cookies = cookies + cookiesPerClick;
