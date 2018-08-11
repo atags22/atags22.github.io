@@ -290,6 +290,32 @@ function updateDisplay() {
   document.getElementById("howManyFactories").style.color = "#429ef4"
   //document.getElementById("addAdd").innerHTML = "Increase cookies per click <br/> You need " + (cost - cookies) +" cookies"
 
+  if (isGrandmaRunning == false){
+    document.getElementById("BuyMine").style.visibility="hidden";
+
+  }
+
+  else {
+    document.getElementById("BuyMine").style.visibility="visible";
+
+  }
+
+
+
+
+  if (isFarmRunning == false){
+    document.getElementById("BuyFactory").style.visibility="hidden";
+
+  }
+
+  else {
+    document.getElementById("BuyFactory").style.visibility="visible";
+
+  }
+
+
+
+
   if (cookies >= cost){
     document.getElementById("addAdd").style.background='#ff7f00';
   }
