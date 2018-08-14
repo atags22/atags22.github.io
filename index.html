@@ -84,6 +84,8 @@ button {
 
   <body>
 
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <div id="BreadBaker">
 
       <p> <a href="/AWS-Website/clicker.html">Play BakeBread, a parody of cookie clicker!</a> </p>
@@ -187,7 +189,6 @@ var numFactory = 0
 var factoryCost = 12000
 
 
-
 document.getElementById("Baker").style.height='300px';
 document.getElementById("BuyGrandma").style.background='#000000';
 document.getElementById("BuyGrandma").style.color='#000000';
@@ -199,7 +200,7 @@ updateDisplay();
 callUpdateDisplay();
 
 function callUpdateDisplay() {
-updateDisplay();
+  updateDisplay();
   setTimeout(function(){
     callUpdateDisplay();
   }, 50);
@@ -271,9 +272,10 @@ function updateDisplay() {
     document.getElementById("numberOfCookies").innerHTML = "You have 1 cookie!"
   }
   else {
-    document.getElementById("numberOfCookies").innerHTML = "You have " + cookies + " cookies!";
+    document.getElementById("numberOfCookies").innerHTML = "You have " + convertToDisp(cookies) + " cookies!";
   }
   document.getElementById("numberOfCookies").style.color = "#429ef4";
+  document.getElementById("numberOfCookies").style.fontSize = "14px";
   document.getElementById("cookiesPerGrandma").innerHTML = "You have " + numGrandma + " Grandmas!";
   document.getElementById("cookiesPerGrandma").style.color = "#429ef4";
   document.getElementById("BuyGrandma").innerHTML = "Buy a grandma! <br/> You need to pay " + grandmaCost + " cookies!";
@@ -282,23 +284,24 @@ function updateDisplay() {
   document.getElementById("BuyFactory").innerHTML = "Buy a Factory! <br/> You need to pay " + factoryCost + " cookies!";
   document.getElementById("howManyYouGet").innerHTML = "You get " + cookiesPerClick + " cookies per click!";
   document.getElementById("howManyYouGet").style.color = "#429ef4";
+  document.getElementById("howManyYouGet").style.fontSize = "14px";
   document.getElementById("howManyFarms").innerHTML = "You have " + numFarm + " Farms!"
-  document.getElementById("howManyFarms").style.color = "#429ef4"
-  document.getElementById("howManyMines").innerHTML = "You have " + numMine + " Mines!"
-  document.getElementById("howManyMines").style.color = "#429ef4"
-  document.getElementById("howManyFactories").innerHTML = "You have " + numFactory + " Factories!"
-  document.getElementById("howManyFactories").style.color = "#429ef4"
-  //document.getElementById("addAdd").innerHTML = "Increase cookies per click <br/> You need " + (cost - cookies) +" cookies"
+    document.getElementById("howManyFarms").style.color = "#429ef4"
+    document.getElementById("howManyMines").innerHTML = "You have " + numMine + " Mines!"
+    document.getElementById("howManyMines").style.color = "#429ef4"
+    document.getElementById("howManyFactories").innerHTML = "You have " + numFactory + " Factories!"
+    document.getElementById("howManyFactories").style.color = "#429ef4"
+    //document.getElementById("addAdd").innerHTML = "Increase cookies per click <br/> You need " + (cost - cookies) +" cookies"
 
-  if (isGrandmaRunning == false){
-    document.getElementById("BuyMine").style.visibility="hidden";
+    if (isGrandmaRunning == false){
+      document.getElementById("BuyMine").style.visibility="hidden";
 
-  }
+    }
 
-  else {
-    document.getElementById("BuyMine").style.visibility="visible";
+    else {
+      document.getElementById("BuyMine").style.visibility="visible";
 
-  }
+    }
 
 
 
@@ -423,9 +426,9 @@ function addGrandma() {
     else{
       runGrandma();
       isGrandmaRunning = 1
-      numGrandma = 1
-      cookies = cookies - grandmaCost
-      grandmaCost = Math.round(1.15*grandmaCost);
+        numGrandma = 1
+        cookies = cookies - grandmaCost
+        grandmaCost = Math.round(1.15*grandmaCost);
     }
     updateDisplay();
 
@@ -438,7 +441,7 @@ function addFarm() {
   if (cookies >= farmCost) {
     if(isFarmRunning == 1){
       numFarm = numFarm + 1
-      cookies = cookies - farmCost;
+        cookies = cookies - farmCost;
       farmCost = Math.round(1.15*farmCost);
       updateDisplay();
       document.getElementById("howManyFarms").innerHTML = "You have " + numFarm + " Farms!"
@@ -446,9 +449,9 @@ function addFarm() {
     else{
       runFarm();
       isFarmRunning = 1
-      numFarm = 1
-      cookies = cookies - farmCost
-      farmCost = Math.round(1.15*farmCost);
+        numFarm = 1
+        cookies = cookies - farmCost
+        farmCost = Math.round(1.15*farmCost);
       updateDisplay();
     }
   }
@@ -457,9 +460,9 @@ function addFarm() {
 function runFarm() {
 
   setTimeout(function(){
-  cookies = Math.round(cookies + (numFarm * 1))
-  updateDisplay();
-  runFarm();
+    cookies = Math.round(cookies + (numFarm * 1))
+      updateDisplay();
+    runFarm();
   }, 1000);
 }
 
@@ -474,7 +477,7 @@ function addMine() {
   if (cookies >= mineCost) {
     if(isMineRunning == 1){
       numMine = numMine + 1
-      cookies = cookies - mineCost;
+        cookies = cookies - mineCost;
       mineCost = Math.round(1.15*mineCost);
       updateDisplay();
       document.getElementById("howManyMines").innerHTML = "You have " + numMine + " Mines!"
@@ -482,9 +485,9 @@ function addMine() {
     else{
       runMine();
       isMineRunning = 1
-      numMine = 1
-      cookies = cookies - mineCost
-      mineCost = Math.round(1.15*mineCost);
+        numMine = 1
+        cookies = cookies - mineCost
+        mineCost = Math.round(1.15*mineCost);
       updateDisplay();
     }
   }
@@ -493,9 +496,9 @@ function addMine() {
 function runMine() {
 
   setTimeout(function(){
-  cookies = Math.round(cookies + (numMine * 1))
-  updateDisplay();
-  runMine();
+    cookies = Math.round(cookies + (numMine * 1))
+      updateDisplay();
+    runMine();
   }, 125);
 }
 
@@ -510,7 +513,7 @@ function addFactory() {
   if (cookies >= factoryCost) {
     if(isFactoryRunning == 1){
       numFactory = numFactory + 1
-      cookies = cookies - factoryCost;
+        cookies = cookies - factoryCost;
       factoryCost = Math.round(1.15*factoryCost);
       updateDisplay();
       document.getElementById("howManyFactories").innerHTML = "You have " + numFactory + " Factories!"
@@ -518,9 +521,9 @@ function addFactory() {
     else{
       runFactory();
       isFactoryRunning = 1
-      numFactory = 1
-      cookies = cookies - factoryCost
-      factoryCost = Math.round(1.15*factoryCost);
+        numFactory = 1
+        cookies = cookies - factoryCost
+        factoryCost = Math.round(1.15*factoryCost);
       updateDisplay();
     }
   }
@@ -529,9 +532,9 @@ function addFactory() {
 function runFactory() {
 
   setTimeout(function(){
-  cookies = Math.round(cookies + (numFactory * 13))
-  updateDisplay();
-  runFactory();
+    cookies = Math.round(cookies + (numFactory * 13))
+      updateDisplay();
+    runFactory();
   }, 250);
 }
 
@@ -553,6 +556,104 @@ function addCookies() {
 function moreCookiesPerClick() {
   hello
 }
+
+
+function convertToDisp(num) {
+  var numCopy = num
+    var count = 0
+    while (numCopy > 10) {
+      numCopy /= 10
+        count++
+
+    }
+  if (count > 2) {
+    var countCopy = count
+      var newCount = 0
+      while (countCopy > 0) {
+        countCopy -= 3
+          newCount++
+
+      }   
+    var i
+      for (i=0; i < newCount; i++) {
+        num /= 100
+
+      }
+
+  }
+  num = Math.round(num)
+    var ret
+    switch (newCount) {
+      case 0:
+        ret = ""
+          break;
+
+      case 1:
+        ret = " thousand"
+          break;
+
+      case 2:
+        ret = " million"
+          break;
+
+      case 3:
+        ret = " billion"
+          break;
+
+      case 4:
+        ret = " trillion"
+          break;
+
+      case 5:
+        ret = " quadrillion"
+          break;
+
+      case 6:
+        ret = " quintillion"
+          break;
+
+      case 7:
+        ret = " sextillion"
+          break;
+
+      case 8:
+        ret = " septillion"
+          break;
+
+      case 9:
+        ret = " octillion"
+          break;
+
+      case 10:
+        ret = " nonillion"
+          break;
+
+      case 11:
+        ret = " decillion"
+          break;
+
+      case 12:
+        ret = " undecillion"
+          break;
+
+      default:
+        ret = ""
+          break;
+
+    }
+
+  if (newCount > 0) {
+    return num/10 + ret
+
+  } else {
+    return num
+
+  }
+
+}
+
+
+
     </script>
 
   </body>
