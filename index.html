@@ -53,6 +53,12 @@ h1 {
 
 }
 
+#whereToClick {
+  left: 300px
+  top: 10px;
+  position: absolute;
+
+}
 
 #buttonsAndText {
   margin: auto;
@@ -172,6 +178,8 @@ button {
 
     <p id="TMP"></p>
 
+    <p id="whereToClick"></p>
+
     <p id="howManyYouGet"></p>
 
     <p id="costOfGrandma"></p>
@@ -219,6 +227,7 @@ document.getElementById("BuyGrandma").style.background='#000000';
 document.getElementById("BuyGrandma").style.color='#000000';
 document.getElementById("addAdd").style.background='#CCCCCC';
 document.getElementById("addAdd").style.visibility='hidden';
+document.getElementById("whereToClick").innerHTML = "Click the cookie to get a cookie!";
 
 function darkTheme() {
 document.getElementById("GetAutoBakers").style.color = "#f442e2"
@@ -229,7 +238,8 @@ document.getElementById("howManyFarms").style.color = "#429ef4"
 document.getElementById("cookiesPerGrandma").style.color = "#429ef4";
 document.getElementById("howManyYouGet").style.color = "#429ef4";
 document.getElementById("howManyFactories").style.color = "#429ef4"
-  document.getElementById("CookieClickerHeader").style.color = "red"
+document.getElementById("CookieClickerHeader").style.color = "red"
+document.getElementById("whereToClick").style.color = "#a126ff";
 }
 
 function lightTheme() {
@@ -241,7 +251,8 @@ document.getElementById("howManyFarms").style.color = "#000000"
 document.getElementById("cookiesPerGrandma").style.color = "#000000";
 document.getElementById("howManyYouGet").style.color = "#000000";
 document.getElementById("howManyFactories").style.color = "#000000"
-  document.getElementById("CookieClickerHeader").style.color = "blue"
+document.getElementById("CookieClickerHeader").style.color = "black"
+document.getElementById("whereToClick").style.color = "black";
 }
 
 updateDisplay();
