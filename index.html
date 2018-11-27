@@ -26,6 +26,10 @@ h1 {
 
 }
 
+#TMPschool{
+  color: orange; 
+}
+
 #DarkTheme {
   position: absolute;
   left: 5px;
@@ -189,6 +193,8 @@ button {
     <p id="numberOfGrandmas"></p>
 
     <p id="randomNumber"></p>
+
+    <p id="TMPschool"></p>
 
     <script>
 
@@ -442,6 +448,15 @@ function updateDisplay() {
 
   if((isFactoryRunning == 0) && (cookies <= factoryCost)){
     document.getElementById("BuyFactory").style.background='#000000'
+  }
+
+
+  
+
+
+  if (cookies >= 100){
+    document.getElementById("TMPschool").innerHTML = "cdc.gov"
+
   }
 
 
