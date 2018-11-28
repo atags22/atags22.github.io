@@ -27,7 +27,9 @@ h1 {
 }
 
 #TMPschool{
-  color: orange; 
+  color: orange;
+  position: absolute;
+  bottom: 500px;
 }
 
 #DarkTheme {
@@ -118,6 +120,8 @@ button {
 
     <div id="BreadBaker">
 
+      <img id= "TMPschool" src="/TMP.png">
+
       <button id="DarkTheme" onclick="darkTheme()">Dark theme</button>
 
       <button id="LightTheme" onclick="lightTheme()">Light theme</button>
@@ -194,8 +198,6 @@ button {
 
     <p id="randomNumber"></p>
 
-    <p id="TMPschool"></p>
-
     <script>
 
 
@@ -234,6 +236,7 @@ document.getElementById("BuyGrandma").style.color='#000000';
 document.getElementById("addAdd").style.background='#CCCCCC';
 document.getElementById("addAdd").style.visibility='hidden';
 document.getElementById("whereToClick").innerHTML = "Click the cookie to get a cookie!";
+document.getElementById("TMPschool").style.visibility='hidden';
 
 function darkTheme() {
 document.getElementById("GetAutoBakers").style.color = "#f442e2"
@@ -451,13 +454,12 @@ function updateDisplay() {
   }
 
 
-  
-
-
-  if (cookies >= 100){
-    document.getElementById("TMPschool").innerHTML = "cdc.gov"
+  if (cookies >= 100) {
+    document.getElementById("TMPschool").style.visibility='visible';
 
   }
+
+
 
 
   //if (cost > cookies) {
