@@ -26,18 +26,6 @@ h1 {
 
 }
 
-#TMPschool{
-  position: absolute;
-  bottom: 500px;
-
-}
-
-#TMPschool1{
-  color: orange;
-  position: absolute;
-  bottom: 500px;
-
-}
 
 #DarkTheme {
   position: absolute;
@@ -127,10 +115,6 @@ button {
 
     <div id="BreadBaker">
 
-      <img id= "TMPschool" src="/TMP.png">
-
-      <p id=TMPschool1>cdc.gov</p>
-
       <button id="DarkTheme" onclick="darkTheme()">Dark theme</button>
 
       <button id="LightTheme" onclick="lightTheme()">Light theme</button>
@@ -210,7 +194,6 @@ button {
     <script>
 
 
-//TODO: Make it so that you can find treasure chests.
 var cookies = 0;
 var cookiesPerClick = 1;
 var cost = 2;
@@ -245,8 +228,10 @@ document.getElementById("BuyGrandma").style.color='#000000';
 document.getElementById("addAdd").style.background='#CCCCCC';
 document.getElementById("addAdd").style.visibility='hidden';
 document.getElementById("whereToClick").innerHTML = "Click the cookie to get a cookie!";
-document.getElementById("TMPschool").style.visibility='hidden';
-document.getElementById("TMPschool1").style.visibility='hidden';
+document.getElementByID("addGrandma").style.color = "FFFFFF";
+document.getElementByID("addFarm").innerHTML.style.color = "FFFFFF";
+document.getElementByID("addMine").style.color = "FFFFFF";
+document.getElementByID("addFactory").style.color = "FFFFFF";
 
 function darkTheme() {
 document.getElementById("GetAutoBakers").style.color = "#f442e2"
@@ -464,11 +449,6 @@ function updateDisplay() {
   }
 
 
-  if (cookies >= 100) {
-    document.getElementById("TMPschool").style.visibility='visible';
-    document.getElementById("TMPschool1").style.visibility='visible';
-
-  }
 
 
 
