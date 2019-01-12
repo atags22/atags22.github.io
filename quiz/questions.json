@@ -1,8 +1,0 @@
-{
-"questions":[
-  {"question":"Is this question 1?", "option1":"Yes", "option2":"No", "option3":"Maybe", "option4":"All of the above", "selectedAnswer":"NULL"},
-  {"question":"Is this question 2?", "option1":"Yes", "option2":"No", "option3":"Maybe", "option4":"All of the above", "selectedAnswer":"NULL"},
-  {"question":"Is this question 3?", "option1":"Yes", "option2":"No", "option3":"Maybe", "option4":"All of the above", "selectedAnswer":"NULL"},
-  {"question":"Is this question 4?", "option1":"Yes", "option2":"No", "option3":"Maybe", "option4":"All of the above", "selectedAnswer":"NULL"},
-]
-}
