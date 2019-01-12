@@ -11,28 +11,78 @@ h2 {
   text-align: left: 20px;
 
 }
+#Answers {
+  left: 30px;
+  position: absolute;
+
+}
 
   </style>
 
   <body>
 
-        <h1 id="QuizHeader">Learning Quiz!</h1>
+    <h1 id="QuizHeader">Learning Quiz!</h1>
 
-        <h2 id="QuestionText">Loading...</h2>
+    <h2 id="QuestionText">Loading...</h2>
 
-        <script type="text/javascript" src="questionDb.json"></script>
+    <div id=Answers>
 
-        <script>
+      <button id="optA" onclick="selectA()"></button>
+      <br>
+      <button id="optB" onclick="selectB()"></button>
+      <br>
+      <button id="optC" onclick="selectC()"></button>
+      <br>
+      <button id="optD" onclick="selectD()"></button>
+    </div>
 
-  var obj = JSON.parse(questions);
 
-  document.getElementById("QuestionText").innerHTML = obj.questions[0].question;
+    <script>
+var data = '{"questions":[' +
+    '{"question":"Is this question 1?", "option1":"Yes", "option2":"No", "option3":"Maybe", "option4":"All of the above", "selectedAnswer":"NULL"}, ' +
+    '{"question":"Is this question 2?", "option1":"Yes", "option2":"No", "option3":"Maybe", "option4":"All of the above", "selectedAnswer":"NULL"},' +
+    '{"question":"Is this question 3?", "option1":"Yes", "option2":"No", "option3":"Maybe", "option4":"All of the above", "selectedAnswer":"NULL"},' +
+    '{"question":"Is this question 4?", "option1":"Yes", "option2":"No", "option3":"Maybe", "option4":"All of the above", "selectedAnswer":"NULL"}]}';
+
+
+    var obj = JSON.parse(data);
+    var questionNum = -1;
+    whatQuestion();
 
 
 
+function whatQuestion() {
+      questionNum++;
+
+  if(questionNum < obj.questions.length){
+      document.getElementById("QuestionText").innerHTML = obj.questions[questionNum].question;
+      document.getElementById("optA").innerHTML = "A. " + obj.questions[questionNum].option1;
+      document.getElementById("optB").innerHTML = "B. " + obj.questions[questionNum].option2;
+      document.getElementById("optC").innerHTML = "C. " + obj.questions[questionNum].option3;
+      document.getElementById("optD").innerHTML = "D. " + obj.questions[questionNum].option4;
+
+  }
 
 
+}
 
+function selectA(){
+  obj.questions[questionNum].selectedAnswer="a";
+  whatQuestion()
+}
+
+function selectB(){
+  whatQuestion()
+}
+
+function selectC(){
+  whatQuestion()
+}
+
+
+function selectD(){
+  whatQuestion()
+}
 
     </script>
 
