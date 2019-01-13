@@ -66,7 +66,7 @@ h1 {
 #prev {
   width: 49%;
   height: 100%;
-  left: 0%;
+  left: 1%;
   top: 0%;
   bottom: 0%;
   border-width: 5px;
@@ -83,7 +83,6 @@ h1 {
   right: 0%;
   top: 0%;
   bottom: 0%;
-  position: absolute;
   border-width: 5px;
   border-style: outset;
   border-color: "#6d6d6d";
@@ -98,7 +97,6 @@ h1 {
   right: 0%;
   top: 0%;
   bottom: 0%;
-  position: absolute;
   border-width: 5px;
   border-style: outset;
   border-color: "#6d6d6d";
@@ -207,16 +205,16 @@ function updateDisplay(){
         document.getElementById("optD").style.color="#000000";
 
           if(obj.questions[currentQuestion].selectedAnswer == "a"){
-            document.getElementById("optA").style.color="red";
+            document.getElementById("optA").style.color="green";
           }
           if(obj.questions[currentQuestion].selectedAnswer == "b"){
-            document.getElementById("optB").style.color="red";
+            document.getElementById("optB").style.color="green";
           }
           if(obj.questions[currentQuestion].selectedAnswer == "c"){
-            document.getElementById("optC").style.color="red";
+            document.getElementById("optC").style.color="green";
           }
           if(obj.questions[currentQuestion].selectedAnswer == "d"){
-            document.getElementById("optD").style.color="red";
+            document.getElementById("optD").style.color="green";
           }
 
 
