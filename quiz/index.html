@@ -20,6 +20,7 @@ h1 {
 
 }
 
+
 #Answers {
   left: 25%;
   top: 30%;
@@ -31,10 +32,66 @@ h1 {
 
 }
 
+#prev:hover {
+  border-width: 5px;
+  border-style: inset;
+  border-color: "#6d6d6d";
+}
+
+#next:hover {
+  border-width: 5px;
+  border-style: inset;
+  border-color: "#6d6d6d";
+}
+
+
 #navButton {
   position: absolute;
-  left: 45%;
+  left: 13%;
   bottom: 5%;
+  height: 10%;
+  width: 75%;
+
+}
+
+#prev {
+  width: 49%;
+  height: 100%;
+  left: 0%;
+  top: 0%;
+  bottom: 0%;
+  border-width: 5px;
+  border-style: outset;
+  border-color: "#6d6d6d";
+  font-size: 350%;
+
+}
+
+#submit {
+  width: 49%;
+  height: 100%;
+  right: 0%;
+  top: 0%;
+  bottom: 0%;
+  position: absolute;
+  border-width: 5px;
+  border-style: outset;
+  border-color: "#6d6d6d";
+  font-size: 350%;
+
+}
+
+#next {
+  width: 49%;
+  height: 100%;
+  right: 0%;
+  top: 0%;
+  bottom: 0%;
+  position: absolute;
+  border-width: 5px;
+  border-style: outset;
+  border-color: "#6d6d6d";
+  font-size: 350%;
 
 }
 
@@ -42,21 +99,25 @@ h1 {
 #optA {
   height: 25%;
   width: 100%;
+  font-size: 200%;
 }
 
 #optB {
   height: 25%;
   width: 100%;
+  font-size: 200%;
 }
 
 #optC {
   height: 25%;
   width: 100%;
+  font-size: 200%;
 }
 
 #optD {
   height: 25%;
   width: 100%;
+  font-size: 200%;
 }
 
   </style>
@@ -85,6 +146,7 @@ h1 {
       <div id=navButton>
         <button id="prev" onclick="prevQuestion()">Previous</button>
         <button id="next" onclick="nextQuestion()">Next</button>
+        <button id="submit" onclick="nextQuestion()">Next</button>
       </div>
 
     </div>
@@ -100,13 +162,14 @@ var data = '{"questions":[' +
 
 
     var obj = JSON.parse(data);
-    var questionNum = 0;
-    whatQuestion(questionNum++);
+    var currentQuestion = 0;
+    whatQuestion(currentQuestion);
 
 
 
     function whatQuestion(destinationQuestion) {
 
+      currentQuestion = destinationQuestion;
       if(destinationQuestion < obj.questions.length){
         document.getElementById("QuestionText").innerHTML = obj.questions[destinationQuestion].question;
         document.getElementById("optA").innerHTML = "A. " + obj.questions[destinationQuestion].option1;
@@ -114,71 +177,90 @@ var data = '{"questions":[' +
         document.getElementById("optC").innerHTML = "C. " + obj.questions[destinationQuestion].option3;
         document.getElementById("optD").innerHTML = "D. " + obj.questions[destinationQuestion].option4;
 
-//        document.getElementById("optA").style.backgroundColor="#e1e1e1";
-//        document.getElementById("optB").style.backgroundColor="#e1e1e1";
-//        document.getElementById("optC").style.backgroundColor="#e1e1e1";
-//        document.getElementById("optD").style.backgroundColor="#e1e1e1";
-
-//        if(document.getElementById("selectedAnswer") != NULL){
-//          if(document.getElementById("selectedAnswer") == "a"){
-//            document.getElementById("optA").style.color="red";
-//          }
-//          if(document.getElementById("selectedAnswer") == "b"){
-//            document.getElementById("optB").style.color="red";
-//          }
-//          if(document.getElementById("selectedAnswer") == "c"){
-//            document.getElementById("optC").style.color="red";
-//          }
-//          if(document.getElementById("selectedAnswer") == "d"){
-//            document.getElementById("optD").style.color="red";
-//          }
-//
-//
-//        }
-
-      }
+        updateDisplay();
 
 
     }
 
+
+  }
+
+
+
+
+function updateDisplay(){
+        document.getElementById("optA").style.color="#000000";
+        document.getElementById("optB").style.color="#000000";
+        document.getElementById("optC").style.color="#000000";
+        document.getElementById("optD").style.color="#000000";
+
+          if(obj.questions[currentQuestion].selectedAnswer == "a"){
+            document.getElementById("optA").style.color="red";
+          }
+          if(obj.questions[currentQuestion].selectedAnswer == "b"){
+            document.getElementById("optB").style.color="red";
+          }
+          if(obj.questions[currentQuestion].selectedAnswer == "c"){
+            document.getElementById("optC").style.color="red";
+          }
+          if(obj.questions[currentQuestion].selectedAnswer == "d"){
+            document.getElementById("optD").style.color="red";
+          }
+
+
+
+}
+
 function prevQuestion() {
-  if(questionNum > 0){
-    questionNum --;
-    whatQuestion(questionNum);
+  if(currentQuestion > 0){
+    currentQuestion --;
+    whatQuestion(currentQuestion);
 
   }
 
 }
 
+
+  document.getElementById("submit").style.visibility="hidden";
+
+
+
 function nextQuestion() {
-  if(questionNum < obj.questions.length -1) {
-  questionNum ++;
-  whatQuestion(questionNum);
+  if(currentQuestion < obj.questions.length -1) {
+  currentQuestion ++;
+  whatQuestion(currentQuestion);
 
   }
+
+if (currentQuestion == obj.questions.length -1) {
+  document.getElementById("next").style.visibility="hidden";
+  document.getElementById("submit").style.visibility="visible";
+
+}
+
 }
 
 
 
 function selectA(){
-  obj.questions[questionNum].selectedAnswer="a";
-  whatQuestion(questionNum++)
+  obj.questions[currentQuestion].selectedAnswer="a";
+  updateDisplay();
 }
 
 function selectB(){
-  obj.questions[questionNum].selectedAnswer="b";
-  whatQuestion(questionNum++)
+  obj.questions[currentQuestion].selectedAnswer="b";
+  updateDisplay();
 }
 
 function selectC(){
-  obj.questions[questionNum].selectedAnswer="c";
-  whatQuestion(questionNum++)
+  obj.questions[currentQuestion].selectedAnswer="c";
+  updateDisplay();
 }
 
 
 function selectD(){
-  obj.questions[questionNum].selectedAnswer="d";
-  whatQuestion(questionNum++)
+  obj.questions[currentQuestion].selectedAnswer="d";
+  updateDisplay();
 }
 
     </script>
