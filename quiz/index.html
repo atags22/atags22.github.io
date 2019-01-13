@@ -146,7 +146,7 @@ h1 {
       <div id=navButton>
         <button id="prev" onclick="prevQuestion()">Previous</button>
         <button id="next" onclick="nextQuestion()">Next</button>
-        <button id="submit" onclick="nextQuestion()">Next</button>
+        <button id="submit" onclick="nextQuestion()">Submit</button>
       </div>
 
     </div>
@@ -212,6 +212,12 @@ function updateDisplay(){
 }
 
 function prevQuestion() {
+if (currentQuestion == obj.questions.length -1) {
+  document.getElementById("next").style.visibility="visible";
+  document.getElementById("submit").style.visibility="hidden";
+
+
+}
   if(currentQuestion > 0){
     currentQuestion --;
     whatQuestion(currentQuestion);
@@ -235,6 +241,7 @@ function nextQuestion() {
 if (currentQuestion == obj.questions.length -1) {
   document.getElementById("next").style.visibility="hidden";
   document.getElementById("submit").style.visibility="visible";
+
 
 }
 
