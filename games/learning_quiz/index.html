@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html>
+  <style>
+
+h1 {
+  text-align: center;
+
+}
+
+
+#QuestionText {
+  font-size: 300%;
+  text-align: center;
+
+
+}
+
+#Container {
+  width: 300px;
+
+}
+
+
+
+
+#Answers {
+  left: 25%;
+  top: 30%;
+  position: absolute;
+  border: 10px double #6d6d6d;
+  background-color: #d6d6d6;
+  width: 50%;
+  height: 50%;
+
+}
+
+#prev:hover {
+  border-width: 5px;
+  border-style: inset;
+  border-color: "#6d6d6d";
+  box-shadow: -5px -5px #212121;
+}
+
+#next:hover {
+  border-width: 5px;
+  border-style: inset;
+  border-color: "#6d6d6d";
+  box-shadow: -5px -5px #212121;
+}
+
+#submit:hover {
+  border-width: 5px;
+  border-style: inset;
+  border-color: "#6d6d6d";
+  box-shadow: -5px -5px #212121;
+}
+
+
+#navButton {
+  position: absolute;
+  left: 13%;
+  bottom: 5%;
+  height: 10%;
+  width: 75%;
+
+}
+
+#prev {
+  width: 49%;
+  height: 100%;
+  left: 1%;
+  top: 0%;
+  bottom: 0%;
+  border-width: 5px;
+  border-style: outset;
+  border-color: "#6d6d6d";
+  font-size: 350%;
+  box-shadow: 5px 5px #212121;
+
+}
+
+#submit {
+  width: 49%;
+  height: 100%;
+  right: 0%;
+  top: 0%;
+  bottom: 0%;
+  border-width: 5px;
+  border-style: outset;
+  border-color: "#6d6d6d";
+  font-size: 350%;
+  box-shadow: 5px 5px #212121;
+
+}
+
+#next {
+  width: 49%;
+  height: 100%;
+  right: 0%;
+  top: 0%;
+  bottom: 0%;
+  border-width: 5px;
+  border-style: outset;
+  border-color: "#6d6d6d";
+  font-size: 350%;
+  box-shadow: 5px 5px #212121;
+
+}
+
+
+#optA {
+  height: 25%;
+  width: 100%;
+  font-size: 200%;
+}
+
+#optB {
+  height: 25%;
+  width: 100%;
+  font-size: 200%;
+}
+
+#optC {
+  height: 25%;
+  width: 100%;
+  font-size: 200%;
+}
+
+#optD {
+  height: 25%;
+  width: 100%;
+  font-size: 200%;
+}
+
+  </style>
+
+  <body>
+
+    <h1 id="QuizHeader">Learning Quiz!</h1>
+
+    <p id="QuestionText">Loading...</>
+
+
+    <div id=Container>
+
+
+      <div id=Answers>
+
+        <button id="optA" onclick="selectA()"></button>
+        <br>
+        <button id="optB" onclick="selectB()"></button>
+        <br>
+        <button id="optC" onclick="selectC()"></button>
+        <br>
+        <button id="optD" onclick="selectD()"></button>
+      </div>
+
+      <div id=navButton>
+        <button id="prev" onclick="prevQuestion()">Previous</button>
+        <button id="next" onclick="nextQuestion()">Next</button>
+        <button id="submit" onclick="nextQuestion()">Submit</button>
+      </div>
+
+    </div>
+
+
+
+    <script>
+var data = '{"questions":[' +
+    '{"question":"Is this question 1?", "option1":"Yes", "option2":"No", "option3":"Maybe", "option4":"All of the above", "selectedAnswer":"NULL"}, ' +
+    '{"question":"Is this question 2?", "option1":"Yes", "option2":"No", "option3":"Maybe", "option4":"All of the above", "selectedAnswer":"NULL"},' +
+    '{"question":"Is this question 3?", "option1":"Yes", "option2":"No", "option3":"Maybe", "option4":"All of the above", "selectedAnswer":"NULL"},' +
+    '{"question":"Is this question 4?", "option1":"Yes", "option2":"No", "option3":"Maybe", "option4":"All of the above", "selectedAnswer":"NULL"}]}';
+
+
+    var obj = JSON.parse(data);
+    var currentQuestion = 0;
+    whatQuestion(currentQuestion);
+
+
+
+    function whatQuestion(destinationQuestion) {
+
+      currentQuestion = destinationQuestion;
+      if(destinationQuestion < obj.questions.length){
+        document.getElementById("QuestionText").innerHTML = obj.questions[destinationQuestion].question;
+        document.getElementById("optA").innerHTML = "A. " + obj.questions[destinationQuestion].option1;
+        document.getElementById("optB").innerHTML = "B. " + obj.questions[destinationQuestion].option2;
+        document.getElementById("optC").innerHTML = "C. " + obj.questions[destinationQuestion].option3;
+        document.getElementById("optD").innerHTML = "D. " + obj.questions[destinationQuestion].option4;
+
+        updateDisplay();
+
+
+    }
+
+
+  }
+
+
+function updateDisplay(){
+        document.getElementById("optA").style.color="#000000";
+        document.getElementById("optB").style.color="#000000";
+        document.getElementById("optC").style.color="#000000";
+        document.getElementById("optD").style.color="#000000";
+
+          if(obj.questions[currentQuestion].selectedAnswer == "a"){
+            document.getElementById("optA").style.color="green";
+          }
+          if(obj.questions[currentQuestion].selectedAnswer == "b"){
+            document.getElementById("optB").style.color="green";
+          }
+          if(obj.questions[currentQuestion].selectedAnswer == "c"){
+            document.getElementById("optC").style.color="green";
+          }
+          if(obj.questions[currentQuestion].selectedAnswer == "d"){
+            document.getElementById("optD").style.color="green";
+          }
+
+
+
+}
+
+function prevQuestion() {
+if (currentQuestion == obj.questions.length -1) {
+  document.getElementById("next").style.visibility="visible";
+  document.getElementById("submit").style.visibility="hidden";
+
+
+}
+  if(currentQuestion > 0){
+    currentQuestion --;
+    whatQuestion(currentQuestion);
+
+  }
+
+}
+
+
+  document.getElementById("submit").style.visibility="hidden";
+
+
+
+function nextQuestion() {
+  if(currentQuestion < obj.questions.length -1) {
+  currentQuestion ++;
+  whatQuestion(currentQuestion);
+
+  }
+
+if (currentQuestion == obj.questions.length -1) {
+  document.getElementById("next").style.visibility="hidden";
+  document.getElementById("submit").style.visibility="visible";
+
+
+}
+
+}
+
+
+
+function selectA(){
+  obj.questions[currentQuestion].selectedAnswer="a";
+  updateDisplay();
+}
+
+function selectB(){
+  obj.questions[currentQuestion].selectedAnswer="b";
+  updateDisplay();
+}
+
+function selectC(){
+  obj.questions[currentQuestion].selectedAnswer="c";
+  updateDisplay();
+}
+
+
+function selectD(){
+  obj.questions[currentQuestion].selectedAnswer="d";
+  updateDisplay();
+}
+
+    </script>
+
+  </body>
