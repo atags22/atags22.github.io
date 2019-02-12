@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <style>
+
+#PollutionHeader {
+  position: absolute;
+  left: 2%;
+  top: -1%;
+
+}
+
+
+#Bliss {
+  height: 55%;
+  width: 100%;
+  z-index: -1;
+  display: block;
+  margin: auto;
+  bottom: 0%;
+  left: 0%;
+  position: absolute;
+
+}
+
+#addAdd {
+  top: 8%;
+  position: absolute;
+  width: 8%;
+  height: 5%;
+  font-size: 170%;
+  border-style: double;
+  border-color: black;
+  border-width: 5px;
+
+}
+
+
+#addAdd:hover {
+  box-shadow: 5px 5px 5px grey;
+
+}
+
+
+  </style>
+
+  <body>
+
+
+    <h1 id="PollutionHeader">Pollution Simulator</h1>
+    <p id="pollutionAmount">/1,000,000,000</p>
+    <button type="button" id="addAdd" onclick="pollute">Pollute</button>
+
+    <div id=BlissDiv>
+    <img id="Bliss" src="Bliss.png">
+    </div>
+
+
+
+    <script>
+
+var pollution = "0"
+
+function pollute {
+pollution++;
+
+}
+
+
+document.getElementById="pollutionAmount".innerHTML = pollution + "/1,000,000,000"
+
+    </script>
+
+  </body>
