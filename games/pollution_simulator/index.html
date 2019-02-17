@@ -22,6 +22,23 @@
 
 }
 
+#bar {
+  position: absolute;
+  top: 9.5%;
+  left: 9%;
+  font-size: 100%;
+
+}
+
+#pollutionGoal {
+  position: absolute;
+  top: 7%;
+  left: 9%;
+  font-size: 100%;
+
+}
+
+
 #addAdd {
   top: 8%;
   position: absolute;
@@ -47,8 +64,10 @@
 
 
     <h1 id="PollutionHeader">Pollution Simulator</h1>
-    <p id="pollutionAmount">/1,000,000,000</p>
-    <button type="button" id="addAdd" onclick="pollute">Pollute</button>
+    <p id="pollutionAmount">Pollution: 0/100</p>
+    <button type="button" id="addAdd" onclick="pollute()">Pollute</button>
+
+    <progress id="bar" value="0" max="100"></progress>
 
     <div id=BlissDiv>
     <img id="Bliss" src="Bliss.png">
@@ -56,17 +75,45 @@
 
 
 
+
+
     <script>
 
-var pollution = "0"
+var pollution = 0;
+var pollutionGoal = 100;
 
-function pollute {
+
+function pollute() {
 pollution++;
+document.getElementById("pollutionAmount").innerHTML = "Pollution: " + pollution + "/" + pollutionGoal;
+
+bar.value ++;
+
+if (bar.value == 100) {
+  bar.value = 0;
+
+}
+
+if (pollution >= pollutionGoal - 1) {
+
+  changePollutionGoal();
+  var c = document.getElementById("myCanvas");
+  var ctx=c.getContext("2d");
+  ctx.rect(20,20,150,100);
+  ctx.stroke();
+
+}
 
 }
 
 
-document.getElementById="pollutionAmount".innerHTML = pollution + "/1,000,000,000"
+function changePollutionGoal() {
+
+  pollutionGoal += 100;
+
+}
+
+
 
     </script>
 
