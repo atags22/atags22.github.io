@@ -24,20 +24,29 @@
 
 #bar {
   position: absolute;
-  top: 9.5%;
+  top: 9.2%;
   left: 9%;
   font-size: 100%;
+  z-index: -1;
+  height: 2.5%;
 
 }
 
-#pollutionGoal {
+
+#pollutionPercentage {
   position: absolute;
-  top: 7%;
-  left: 9%;
-  font-size: 100%;
+  top: 7.8%;
+  left: 12.5%;
 
 }
 
+
+#pollutionAmount {
+  position: absolute;
+  top: 7.8%;
+  left: 18%;
+
+}
 
 #addAdd {
   top: 8%;
@@ -47,13 +56,25 @@
   font-size: 170%;
   border-style: double;
   border-color: black;
-  border-width: 5px;
+  border-width: 1px;
 
 }
 
 
 #addAdd:hover {
-  box-shadow: 5px 5px 5px grey;
+  box-shadow: 5px 5px 10px grey;
+
+}
+
+#hirePolluter {
+  position: absolute;
+  top: 15%;
+
+}
+
+#polluterAmount {
+  position: absolute;
+  top: 17%;
 
 }
 
@@ -64,56 +85,102 @@
 
 
     <h1 id="PollutionHeader">Pollution Simulator</h1>
-    <p id="pollutionAmount">Pollution: 0/100</p>
+    <p id="pollutionPercentage">0%</p>
+    <p id="pollutionAmount">pollution: 0/100</p>
     <button type="button" id="addAdd" onclick="pollute()">Pollute</button>
-
+    <button type="button" id="hirePolluter" onclick="getPolluter()">Hire Polluter</button>
     <progress id="bar" value="0" max="100"></progress>
 
-    <div id=BlissDiv>
-    <img id="Bliss" src="Bliss.png">
+    <div id=polluterDiv>
+      <p id="polluterAmount">0 polluters</p>
     </div>
 
+    <div id=BlissDiv>
+      <img id="Bliss" src="Bliss.png">
+    </div>
 
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
 
 
     <script>
 
-var pollution = 0;
-var pollutionGoal = 100;
 
+
+var pollution = 0;
+var pollutionPerClick = 1;
+var pollutionGoal = 100;
+var pollutionPercent = 0;
+var polluterCount = 0;
+var isPolluterRunning = 0;
+
+
+document.getElementById("hirePolluter").style.visibility = "hidden";
+document.getElementById("polluterDiv").style.visibility = "hidden";
 
 function pollute() {
-pollution++;
-document.getElementById("pollutionAmount").innerHTML = "Pollution: " + pollution + "/" + pollutionGoal;
+  pollution = pollution + pollutionPerClick;
+  pollutionPercent++;
 
-bar.value ++;
+  if (pollutionPercent == 100) {
+    pollutionPercent = 0;
 
-if (bar.value == 100) {
-  bar.value = 0;
 
-}
+  }
 
-if (pollution >= pollutionGoal - 1) {
+  if (pollution >= 200) {
+    document.getElementById("hirePolluter").style.visibility = "visible";
 
-  changePollutionGoal();
-  var c = document.getElementById("myCanvas");
-  var ctx=c.getContext("2d");
-  ctx.rect(20,20,150,100);
-  ctx.stroke();
+  }
 
-}
+  document.getElementById("pollutionPercentage").innerHTML = pollutionPercent + "%";
+  document.getElementById("pollutionAmount").innerHTML = "pollution: " + pollution + "/" + pollutionGoal;
+
+  bar.value ++;
+
+  if (bar.value >= 100) {
+    bar.value = 0;
+    pollutionPerClick++
+
+  }
+
+  if (pollution >= pollutionGoal - 1 ) {
+
+    changePollutionGoal();
+    var c = document.getElementById("myCanvas");
+    var ctx=c.getContext("2d");
+    ctx.rect(20,20,150,100);
+    ctx.stroke();
+
+  }
 
 }
 
 
 function changePollutionGoal() {
 
-  pollutionGoal += 100;
+  pollutionGoal += (100 * pollutionPerClick);
 
 }
 
+function getPolluter() {
+  polluterCount++;
+  document.getElementById("polluterDiv").style.visibility = "visible";
+  document.getElementById("polluterAmount").innerHTML = polluterCount + " polluters";
 
+  if (isPolluterRunning == 0) {
+    isPolluterRunning = 1;
+
+  }
+
+}
+
+//function runPolluter() {
+
+//  if (isPolluterRunning == 1)
+//    setTimeout(pollution = pollution * pollution, 1000)
+//    )
+
+//}
 
     </script>
 
