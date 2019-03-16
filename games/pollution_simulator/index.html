@@ -107,6 +107,7 @@
 
 
 var pollution = 0;
+var polluterCost = 50
 var pollutionPerClick = 1;
 var pollutionGoal = 100;
 var pollutionPercent = 0;
@@ -127,7 +128,7 @@ function pollute() {
 
   }
 
-  if (pollution >= 200) {
+  if (pollution >= 50) {
     document.getElementById("hirePolluter").style.visibility = "visible";
 
   }
@@ -146,10 +147,6 @@ function pollute() {
   if (pollution >= pollutionGoal - 1 ) {
 
     changePollutionGoal();
-    var c = document.getElementById("myCanvas");
-    var ctx=c.getContext("2d");
-    ctx.rect(20,20,150,100);
-    ctx.stroke();
 
   }
 
@@ -158,29 +155,47 @@ function pollute() {
 
 function changePollutionGoal() {
 
-  pollutionGoal += (100 * pollutionPerClick);
+  pollutionGoal = Math.round(pollutionGoal * 1.15);
 
 }
 
 function getPolluter() {
-  polluterCount++;
   document.getElementById("polluterDiv").style.visibility = "visible";
   document.getElementById("polluterAmount").innerHTML = polluterCount + " polluters";
 
-  if (isPolluterRunning == 0) {
-    isPolluterRunning = 1;
+  if (pollution >= 50)  {
+
+    if (isPolluterRunning == 0) {
+      isPolluterRunning = 1;
+
+    }
+
+    else {
+
+      if (isPolluterRunning == 1) {
+        runPolluter();
+        polluterCount++;
+        pollution = pollution - 50;
+        document.getElementById("pollutionAmount").innerHTML = "pollution: " + pollution + "/" + pollutionGoal;
+        document.getElementById("polluterAmount").innerHTML = polluterCount + " polluters";
+        polluterCost = Math.round(polluterCost * 1.15);
+
+      }
+    }
+  }
+}
+
+function runPolluter() {
+
+  if (isPolluterRunning == 1) {
+    pollution = pollution + 1 * polluterCount;
+    document.getElementById("pollutionAmount").innerHTML = "pollution: " + pollution + "/" + pollutionGoal;
+    document.getElementById("polluterAmount").innerHTML = polluterCount + " polluters";
+    setTimeout(runPolluter, 500);
 
   }
 
 }
-
-//function runPolluter() {
-
-//  if (isPolluterRunning == 1)
-//    setTimeout(pollution = pollution * pollution, 1000)
-//    )
-
-//}
 
     </script>
 
