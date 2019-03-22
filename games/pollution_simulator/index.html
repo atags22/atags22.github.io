@@ -78,6 +78,17 @@
 
 }
 
+#hirePolluter {
+  border-style: outset;
+  border-width: 3px;
+
+}
+
+#hirePolluter:hover {
+  border-style: inset;
+  border-width: 3px;
+
+}
 
   </style>
 
@@ -88,7 +99,7 @@
     <p id="pollutionPercentage">0%</p>
     <p id="pollutionAmount">pollution: 0/100</p>
     <button type="button" id="addAdd" onclick="pollute()">Pollute</button>
-    <button type="button" id="hirePolluter" onclick="getPolluter()">Hire Polluter</button>
+    <button title="cost: 50 pollution" type="button" id="hirePolluter" onclick="getPolluter()">Hire Polluter</button>
     <progress id="bar" value="0" max="100"></progress>
 
     <div id=polluterDiv>
@@ -107,7 +118,7 @@
 
 
 var pollution = 0;
-var polluterCost = 50
+var polluterCost = 50;
 var pollutionPerClick = 1;
 var pollutionGoal = 100;
 var pollutionPercent = 0;
@@ -128,7 +139,7 @@ function pollute() {
 
   }
 
-  if (pollution >= 50) {
+  if (pollution >= polluterCost) {
     document.getElementById("hirePolluter").style.visibility = "visible";
 
   }
@@ -163,25 +174,17 @@ function getPolluter() {
   document.getElementById("polluterDiv").style.visibility = "visible";
   document.getElementById("polluterAmount").innerHTML = polluterCount + " polluters";
 
-  if (pollution >= 50)  {
+  if (pollution >= polluterCost)  {
 
-    if (isPolluterRunning == 0) {
-      isPolluterRunning = 1;
+    isPolluterRunning = 1;
+    runPolluter();
+    polluterCount++;
+    pollution = pollution - polluterCost;
+    document.getElementById("pollutionAmount").innerHTML = "pollution: " + pollution + "/" + pollutionGoal;
+    document.getElementById("polluterAmount").innerHTML = polluterCount + " polluters";
+    document.getElementById("hirePolluter").title = "cost: " + polluterCost;
+    polluterCost = Math.round(polluterCost * 1.15);
 
-    }
-
-    else {
-
-      if (isPolluterRunning == 1) {
-        runPolluter();
-        polluterCount++;
-        pollution = pollution - 50;
-        document.getElementById("pollutionAmount").innerHTML = "pollution: " + pollution + "/" + pollutionGoal;
-        document.getElementById("polluterAmount").innerHTML = polluterCount + " polluters";
-        polluterCost = Math.round(polluterCost * 1.15);
-
-      }
-    }
   }
 }
 
@@ -192,7 +195,7 @@ function runPolluter() {
     document.getElementById("pollutionAmount").innerHTML = "pollution: " + pollution + "/" + pollutionGoal;
     document.getElementById("polluterAmount").innerHTML = polluterCount + " polluters";
     setTimeout(runPolluter, 500);
-    setTimeout(updateDisplay, 500);
+    setTimeout(updateDisplay, 50);
 
   }
 
