@@ -389,14 +389,17 @@ function updateDisplay() {
 
   if (cookies >= grandmaCost){
     document.getElementById("BuyGrandma").style.background='#ff7f00';
+    document.getElementById("BuyGrandma").style.color='#000000';
 
   }
   else {
     document.getElementById("BuyGrandma").style.background='#CCCCCC'
+    document.getElementById("BuyGrandma").style.color='#000000';
   }
 
   if((isGrandmaRunning == 0) && (cookies <= grandmaCost)){
     document.getElementById("BuyGrandma").style.background='#000000'
+    document.getElementById("BuyGrandma").style.color='#ffffff';
   }
 
 
@@ -405,14 +408,17 @@ function updateDisplay() {
 
   if (cookies >= farmCost){
     document.getElementById("BuyFarm").style.background='#ff7f00';
+    document.getElementById("BuyFarm").style.color='#000000'
 
   }
   else {
     document.getElementById("BuyFarm").style.background='#CCCCCC'
+    document.getElementById("BuyFarm").style.color='#000000'
   }
 
   if((isFarmRunning == 0) && (cookies <= farmCost)){
     document.getElementById("BuyFarm").style.background='#000000'
+    document.getElementById("BuyFarm").style.color='#ffffff'
   }
 
 
@@ -420,14 +426,17 @@ function updateDisplay() {
 
   if (cookies >= mineCost){
     document.getElementById("BuyMine").style.background='#ff7f00';
+    document.getElementById("BuyMine").style.color='#000000'
 
   }
   else {
     document.getElementById("BuyMine").style.background='#CCCCCC'
+    document.getElementById("BuyMine").style.color='#000000'
   }
 
   if((isMineRunning == 0) && (cookies <= mineCost)){
     document.getElementById("BuyMine").style.background='#000000'
+    document.getElementById("BuyMine").style.color='#ffffff'
   }
 
 
@@ -438,14 +447,17 @@ function updateDisplay() {
 
   if (cookies >= factoryCost){
     document.getElementById("BuyFactory").style.background='#ff7f00';
+    document.getElementById("BuyFactory").style.color='#000000'
 
   }
   else {
     document.getElementById("BuyFactory").style.background='#CCCCCC'
+    document.getElementById("BuyFactory").style.color='#000000'
   }
 
   if((isFactoryRunning == 0) && (cookies <= factoryCost)){
     document.getElementById("BuyFactory").style.background='#000000'
+    document.getElementById("BuyFactory").style.color='#ffffff'
   }
 
 
