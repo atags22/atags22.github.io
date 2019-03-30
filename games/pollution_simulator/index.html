@@ -194,7 +194,7 @@ function runPolluter() {
     pollution = pollution + 1 * polluterCount;
     document.getElementById("pollutionAmount").innerHTML = "pollution: " + pollution + "/" + pollutionGoal;
     document.getElementById("polluterAmount").innerHTML = polluterCount + " polluters";
-    setTimeout(runPolluter, 500);
+    setTimeout(runPolluter, 1000);
     setTimeout(updateDisplay, 50);
 
   }
