@@ -180,10 +180,10 @@ function getPolluter() {
     runPolluter();
     polluterCount++;
     pollution = pollution - polluterCost;
+    polluterCost = Math.round(polluterCost * 1.15);
     document.getElementById("pollutionAmount").innerHTML = "pollution: " + pollution + "/" + pollutionGoal;
     document.getElementById("polluterAmount").innerHTML = polluterCount + " polluters";
     document.getElementById("hirePolluter").title = "cost: " + polluterCost;
-    polluterCost = Math.round(polluterCost * 1.15);
 
   }
 }
