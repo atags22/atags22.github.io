@@ -90,6 +90,16 @@
 
 }
 
+#changelogLink {
+  color: #000000;
+  background-color: #FFFFFF;
+  text-decoration: none;
+  bottom: -1%;
+  left: 0.25%;
+  position: absolute;
+
+}
+
   </style>
 
   <body>
@@ -101,7 +111,7 @@
     <button type="button" id="addAdd" onclick="pollute()">Pollute</button>
     <button title="cost: 50 pollution" type="button" id="hirePolluter" onclick="getPolluter()">Hire Polluter</button>
     <progress id="bar" value="0" max="100"></progress>
-
+    <p id="changelogLink"> <a href="simulatorChangelog/index.html">Changelog for pollution simulator</a> </p>
     <div id=polluterDiv>
       <p id="polluterAmount">0 polluters</p>
     </div>
