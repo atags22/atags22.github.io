@@ -22,6 +22,18 @@
 
 }
 
+#BlissToday {
+  height: 55%;
+  width: 100%;
+  z-index: -1;
+  display: block;
+  margin: auto;
+  bottom: 0%;
+  left: 0%;
+  position: absolute;
+
+}
+
 #bar {
   position: absolute;
   top: 9.2%;
@@ -118,6 +130,7 @@
 
     <div id=BlissDiv>
       <img id="Bliss" src="Bliss.png">
+      <img id="BlissToday" src="BlissToday.jpg">
     </div>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
@@ -134,14 +147,17 @@ var pollutionGoal = 100;
 var pollutionPercent = 0;
 var polluterCount = 0;
 var isPolluterRunning = 0;
+var transparency = 0.00000001;
 
 updateDisplay();
 document.getElementById("hirePolluter").style.visibility = "hidden";
 document.getElementById("polluterDiv").style.visibility = "hidden";
+document.getElementById("BlissToday").style.opacity = "0";
 
 function pollute() {
   pollution = pollution + pollutionPerClick;
   pollutionPercent++;
+  transparency = transparency + 0.0000001 * pollutionPerClick;
 
   if (pollutionPercent == 100) {
     pollutionPercent = 0;
@@ -165,6 +181,7 @@ function pollute() {
 
   }
 
+    updateDisplay();
 
 }
 
@@ -172,11 +189,13 @@ function updateDisplay() {
   if (pollution >= pollutionGoal - 1 ) {
     changePollutionGoal();
   }
+    document.getElementById("BlissToday").style.opacity = transparency;
 }
 
 function changePollutionGoal() {
 
   pollutionGoal = Math.round(pollutionGoal * 1.15);
+    updateDisplay();
 
 }
 
@@ -194,6 +213,7 @@ function getPolluter() {
     document.getElementById("pollutionAmount").innerHTML = "pollution: " + pollution + "/" + pollutionGoal;
     document.getElementById("polluterAmount").innerHTML = polluterCount + " polluters";
     document.getElementById("hirePolluter").title = "cost: " + polluterCost;
+    updateDisplay();
 
   }
 }
@@ -204,6 +224,7 @@ function runPolluter() {
     pollution = pollution + 1 * polluterCount;
     document.getElementById("pollutionAmount").innerHTML = "pollution: " + pollution + "/" + pollutionGoal;
     document.getElementById("polluterAmount").innerHTML = polluterCount + " polluters";
+    transparency = transparency + 0.0000001 * polluterCount;
     setTimeout(runPolluter, 1000);
     setTimeout(updateDisplay, 50);
 
