@@ -147,7 +147,7 @@ var pollutionGoal = 100;
 var pollutionPercent = 0;
 var polluterCount = 0;
 var isPolluterRunning = 0;
-var transparency = 0.00000001;
+var transparency = 0.00000005;
 
 updateDisplay();
 document.getElementById("hirePolluter").style.visibility = "hidden";
@@ -157,7 +157,7 @@ document.getElementById("BlissToday").style.opacity = "0";
 function pollute() {
   pollution = pollution + pollutionPerClick;
   pollutionPercent++;
-  transparency = transparency + 0.0000001 * pollutionPerClick;
+  transparency = transparency + 0.0000005 * pollutionPerClick;
 
   if (pollutionPercent == 100) {
     pollutionPercent = 0;
@@ -224,7 +224,7 @@ function runPolluter() {
     pollution = pollution + 1 * polluterCount;
     document.getElementById("pollutionAmount").innerHTML = "pollution: " + pollution + "/" + pollutionGoal;
     document.getElementById("polluterAmount").innerHTML = polluterCount + " polluters";
-    transparency = transparency + 0.0000001 * polluterCount;
+    transparency = transparency + 0.0000005 * polluterCount;
     setTimeout(runPolluter, 1000);
     setTimeout(updateDisplay, 50);
 
