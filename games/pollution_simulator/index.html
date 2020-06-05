@@ -1,142 +1,211 @@
 <!DOCTYPE html>
 <html>
-  <style>
+	<style>
 
 #PollutionHeader {
-  position: absolute;
-  left: 2%;
-  top: -1%;
+	position: absolute;
+	left: 2%;
+	top: -1%;
 
 }
 
 
 #Bliss {
-  height: 55%;
-  width: 100%;
-  z-index: -1;
-  display: block;
-  margin: auto;
-  bottom: 0%;
-  left: 0%;
-  position: absolute;
+	height: 55%;
+	width: 100%;
+	z-index: -1;
+	display: block;
+	margin: auto;
+	bottom: 0%;
+	left: 0%;
+	position: absolute;
 
 }
 
 #BlissToday {
-  height: 55%;
-  width: 100%;
-  z-index: -1;
-  display: block;
-  margin: auto;
-  bottom: 0%;
-  left: 0%;
-  position: absolute;
+	height: 55%;
+	width: 100%;
+	z-index: -1;
+	display: block;
+	margin: auto;
+	bottom: 0%;
+	left: 0%;
+	position: absolute;
 
 }
 
 #bar {
-  position: absolute;
-  top: 9.2%;
-  left: 9%;
-  font-size: 100%;
-  z-index: -1;
-  height: 2.5%;
+	position: absolute;
+	top: 9.2%;
+	left: 9%;
+	font-size: 100%;
+	z-index: -1;
+	height: 2.5%;
 
 }
 
 
 #pollutionPercentage {
-  position: absolute;
-  top: 7.8%;
-  left: 12.5%;
+	position: absolute;
+	top: 7.8%;
+	left: 12.5%;
 
 }
 
 
 #pollutionAmount {
-  position: absolute;
-  top: 7.8%;
-  left: 18%;
+	position: absolute;
+	top: 7.8%;
+	left: 18%;
 
 }
 
 #addAdd {
-  top: 8%;
-  position: absolute;
-  width: 8%;
-  height: 5%;
-  font-size: 170%;
-  border-style: double;
-  border-color: black;
-  border-width: 1px;
+	top: 8%;
+	position: absolute;
+	width: 8%;
+	height: 5%;
+	font-size: 170%;
+	border-style: double;
+	border-color: black;
+	border-width: 1px;
 
 }
 
 
 #addAdd:hover {
-  box-shadow: 5px 5px 10px grey;
+	box-shadow: 5px 5px 10px grey;
 
 }
 
 #hirePolluter {
-  position: absolute;
-  top: 15%;
+	position: absolute;
+	top: 15%;
 
 }
 
 #polluterAmount {
-  position: absolute;
-  top: 17%;
+	position: absolute;
+	top: 17%;
 
 }
 
 #hirePolluter {
-  border-style: outset;
-  border-width: 3px;
+	border-style: outset;
+	border-width: 3px;
 
 }
 
 #hirePolluter:hover {
-  border-style: inset;
-  border-width: 3px;
+	border-style: inset;
+	border-width: 3px;
 
 }
 
 #changelogLink {
-  color: #000000;
-  background-color: #FFFFFF;
-  text-decoration: none;
-  bottom: -1%;
-  left: 0.25%;
-  position: absolute;
+	color: #000000;
+	background-color: #FFFFFF;
+	text-decoration: none;
+	bottom: -1%;
+	left: 0.25%;
+	position: absolute;
 
 }
 
-  </style>
+#DescriptionDiv {
+	position: absolute;
+	right: 0%;
+	top: 0%;
+	height: 40%;
+	width: 15%;
+}
 
-  <body>
+#Description {
+	position: absolute;
+	color: #000000;
+	top: 8%;
+
+}
+
+#descriptionButton {
+	position: absolute;
+	right: 3%;
+	top: 3%;
+}
+
+#WinMessage {
+	font-size: 500%;
+	position: absolute;
+	bottom: 5%;
+
+}
+
+#BigBlackAnnoyingScreen {
+	position: absolute;
+	top: 0%;
+	left: 0%;
+	height: 100%;
+	width: 100%;
+	z-index: 100;
+	opacity: 75%;
+	visibility: hidden;
+}
+
+#tutorialDiv {
+	position: absolute;
+	top: 0%;
+	left: 0%;
+	height: 100%;
+	width: 100%;
+	z-index: 150;
+	visibility: hidden;
+}
+
+#Tutorial {
+	position: absolute;
+	text-align: center;
+	top: 30%;
+	font-size: 200%;
+	color: #FFFFFF;
+	visibility: hidden;
+
+}
+
+	</style>
+
+	<body>
 
 
-    <h1 id="PollutionHeader">Pollution Simulator</h1>
-    <p id="pollutionPercentage">0%</p>
-    <p id="pollutionAmount">pollution: 0/100</p>
-    <button type="button" id="addAdd" onclick="pollute()">Pollute</button>
-    <button title="cost: 50 pollution" type="button" id="hirePolluter" onclick="getPolluter()">Hire Polluter</button>
-    <progress id="bar" value="0" max="100"></progress>
-    <p id="changelogLink"> <a href="simulatorChangelog/index.html">Changelog for pollution simulator</a> </p>
-    <div id=polluterDiv>
-      <p id="polluterAmount">0 polluters</p>
-    </div>
+		<h1 id="PollutionHeader">Pollution Simulator</h1>
+		<p id="pollutionPercentage">0%</p>
+		<p id="pollutionAmount">pollution: 0/100</p>
+		<button type="button" id="addAdd" onclick="pollute()">Pollute</button>
+		<button title="cost: 50 pollution" type="button" id="hirePolluter" onclick="getPolluter()">Hire Polluter</button>
+		<progress id="bar" value="0" max="100"></progress>
+		<p id="changelogLink"> <a href="simulatorChangelog/index.html">Changelog for pollution simulator</a> </p>
+		<div id=DescriptionDiv>
+			<p id="Description">Pollution Simulator is a game where you have to try to pollute the world. When you click the pollute button, you get pollution. when the bar fills up, you get 1 more pollution per click of the "Pollute" button. When you have enough pollution, you can buy stuff that automatically pollutes the world an gives you pollution. However, when the world is fully polluted, you can try to unpollute the whole world.</p>
+			<button type="button" id="descriptionButton" onclick="DescriptionChange()">Show Description</button>
+		</div>
+		<div id=polluterDiv>
+			<p id="polluterAmount">0 polluters</p>
+		</div>
+		<div id=tutorialDiv onclick="hideScreen()">
+			<p id="Tutorial">Do you see that button beneath the pollute button? The one that says "Hire Polluter?" Well, as I'm sure you've guessed by now, that hires a polluter. Polluters are very usefull, as they each give you one pollution every 5 seconds.<br><br>Click anywhere to continue.</p>
+		</div>
+		<p id="WinMessage">Congratulations! You just won the game! Do you want to end now, or unpollute everything?</p>
+		<p id="testId"></p>
+		<img id="BigBlackAnnoyingScreen" src="/games/pollution_simulator/BlackScreen.png" onClick="hideScreen()"/>
 
-    <div id=BlissDiv>
-      <img id="Bliss" src="Bliss.png">
-      <img id="BlissToday" src="BlissToday.jpg">
-    </div>
+		<div id=BlissDiv>
+			<img id="Bliss" src="Bliss.png">
+			<img id="BlissToday" src="BlissToday.jpg">
+		</div>
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
 
 
-    <script>
+		<script>
 
 
 
@@ -148,90 +217,154 @@ var pollutionPercent = 0;
 var polluterCount = 0;
 var isPolluterRunning = 0;
 var transparency = 0.00000005;
+var DescriptionVar = 0;
+var pollutionRecord = 0;
+var tutorialVar = 0;
 
 updateDisplay();
 document.getElementById("hirePolluter").style.visibility = "hidden";
+document.getElementById("WinMessage").style.visibility = "hidden";
 document.getElementById("polluterDiv").style.visibility = "hidden";
+document.getElementById("Description").style.visibility = "hidden";
 document.getElementById("BlissToday").style.opacity = "0";
 
 function pollute() {
-  pollution = pollution + pollutionPerClick;
-  pollutionPercent++;
-  transparency = transparency + 0.0000005 * pollutionPerClick;
+	pollution = pollution + pollutionPerClick;
+	pollutionPercent++;
+	setMaxPollution();
+	transparency = transparency + 0.00000009 * (pollutionPerClick + pollutionRecord);
 
-  if (pollutionPercent == 100) {
-    pollutionPercent = 0;
+	if (pollutionPercent == 100) {
+		pollutionPercent = 0;
 
 
-  }
+	}
 
-  if (pollution >= polluterCost) {
-    document.getElementById("hirePolluter").style.visibility = "visible";
+	if (pollution == 50 & isPolluterRunning == 0) {
+		document.getElementById("BigBlackAnnoyingScreen").style.visibility = "visible";
+		document.getElementById("tutorialDiv").style.visibility = "visible";
+		document.getElementById("Tutorial").style.visibility = "visible";
+		setTimeout(exitTutorial, 2000);
 
-  }
+	}
 
-  document.getElementById("pollutionPercentage").innerHTML = pollutionPercent + "%";
-  document.getElementById("pollutionAmount").innerHTML = "pollution: " + pollution + "/" + pollutionGoal;
+	if (pollution >= polluterCost) {
+		document.getElementById("hirePolluter").style.visibility = "visible";
 
-  bar.value ++;
+	}
 
-  if (bar.value >= 100) {
-    bar.value = 0;
-    pollutionPerClick++
+	document.getElementById("pollutionPercentage").innerHTML = pollutionPercent + "%";
+	document.getElementById("pollutionAmount").innerHTML = "pollution: " + pollution + "/" + pollutionGoal;
 
-  }
+	bar.value ++;
 
-    updateDisplay();
+	if (bar.value >= 100) {
+		bar.value = 0;
+		pollutionPerClick++
 
+	}
+
+	updateDisplay();
+
+}
+
+function exitTutorial() {
+	tutorialVar = 1;
+}
+
+function hideScreen() {
+	if (tutorialVar == 1) {
+		document.getElementById("BigBlackAnnoyingScreen").style.visibility = "hidden";
+		document.getElementById("tutorialDiv").style.visibility = "hidden";
+		document.getElementById("Tutorial").style.visibility = "hidden";
+	}
+}
+
+function setMaxPollution() {
+	if (pollution > (pollutionRecord - 1)) {
+		pollutionRecord = pollution;
+	}
 }
 
 function updateDisplay() {
-  if (pollution >= pollutionGoal - 1 ) {
-    changePollutionGoal();
-  }
-    document.getElementById("BlissToday").style.opacity = transparency;
+	if (pollution >= pollutionGoal - 1 ) {
+		changePollutionGoal();
+	}
+	if (pollution >= polluterCost) {
+		document.getElementById("hirePolluter").style.background="#00FF00";
+
+	}
+	else {
+		document.getElementById("hirePolluter").style.background="#FF0000";
+
+	}
+	document.getElementById("BlissToday").style.opacity = transparency;
+	if (transparency >= 1) {
+		document.getElementById("WinMessage").style.visibility = "visible";
+
+	}
 }
+
+
+function DescriptionChange() {
+	if (DescriptionVar == 0) {
+		document.getElementById("Description").style.visibility = "visible";
+		DescriptionVar = 1;
+
+	}
+
+	else {
+		if (DescriptionVar == 1) {
+			document.getElementById("Description").style.visibility = "hidden";
+			DescriptionVar = 0;
+
+		}
+	}
+
+}
+
 
 function changePollutionGoal() {
 
-  pollutionGoal = Math.round(pollutionGoal * 1.15);
-    updateDisplay();
+	pollutionGoal = Math.round(pollutionGoal * 1.15);
+	updateDisplay();
 
 }
 
+
 function getPolluter() {
-  document.getElementById("polluterDiv").style.visibility = "visible";
-  document.getElementById("polluterAmount").innerHTML = polluterCount + " polluters";
+	document.getElementById("polluterDiv").style.visibility = "visible";
+	document.getElementById("polluterAmount").innerHTML = polluterCount + " polluters";
 
-  if (pollution >= polluterCost)  {
+	if (pollution >= polluterCost)  {
 
-    isPolluterRunning = 1;
-    runPolluter();
-    polluterCount++;
-    pollution = pollution - polluterCost;
-    polluterCost = Math.round(polluterCost * 1.15);
-    document.getElementById("pollutionAmount").innerHTML = "pollution: " + pollution + "/" + pollutionGoal;
-    document.getElementById("polluterAmount").innerHTML = polluterCount + " polluters";
-    document.getElementById("hirePolluter").title = "cost: " + polluterCost;
-    updateDisplay();
+		isPolluterRunning = 1;
+		runPolluter();
+		polluterCount++;
+		pollution = pollution - polluterCost;
+		polluterCost = Math.round(polluterCost * 1.15);
+		document.getElementById("pollutionAmount").innerHTML = "pollution: " + pollution + "/" + pollutionGoal;
+		document.getElementById("polluterAmount").innerHTML = polluterCount + " polluters";
+		document.getElementById("hirePolluter").title = "cost: " + polluterCost;
+		updateDisplay();
 
-  }
+	}
 }
 
 function runPolluter() {
 
-  if (isPolluterRunning == 1) {
-    pollution = pollution + 1 * polluterCount;
-    document.getElementById("pollutionAmount").innerHTML = "pollution: " + pollution + "/" + pollutionGoal;
-    document.getElementById("polluterAmount").innerHTML = polluterCount + " polluters";
-    transparency = transparency + 0.0000005 * polluterCount;
-    setTimeout(runPolluter, 1000);
-    setTimeout(updateDisplay, 50);
+	if (isPolluterRunning == 1) {
+		pollution = pollution + 1 * polluterCount;
+		document.getElementById("pollutionAmount").innerHTML = "pollution: " + pollution + "/" + pollutionGoal;
+		document.getElementById("polluterAmount").innerHTML = polluterCount + " polluters";
+		transparency = transparency + 0.0000005 * polluterCount;
+		setTimeout(runPolluter, 5000);
+		setTimeout(updateDisplay, 50);
 
-  }
+	}
 
 }
 
-    </script>
+		</script>
 
-  </body>
+	</body>

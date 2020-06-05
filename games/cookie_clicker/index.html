@@ -1,206 +1,224 @@
 <!DOCTYPE html>
 <html>
-  <style>
+	<style>
 
 h1 {
-  text-align: center;
+	text-align: center;
 
 }
 
 #CookieDiv {
-  height: 300px;
-  width: 50%;
-  margin: auto;
-  text-align: center;
+	height: 300px;
+	width: 50%;
+	margin: auto;
+	text-align: center;
 
 }
 
 #LightTheme {
-  position: absolute;
-  left: 150px;
-  bottom: 40px;
-  color: black;
-  background-color: #ffffff;
-  height: 40px;
-  width: 141px;
+	position: absolute;
+	left: 150px;
+	bottom: 40px;
+	color: black;
+	background-color: #ffffff;
+	height: 40px;
+	width: 141px;
+	z-index: 1000;
 
 }
 
 
 #DarkTheme {
-  position: absolute;
-  left: 5px;
-  bottom: 40px;
-  color: white;
-  background-color: #000000;
-  height: 40px;
+	position: absolute;
+	left: 5px;
+	bottom: 40px;
+	color: white;
+	background-color: #000000;
+	height: 40px;
+	z-index: 1000;
 
 }
 
 #BreadBaker {
-  position: absolute;
-  bottom: 20px;
-  size: 200px;
+	position: absolute;
+	bottom: 20px;
+	size: 200px;
 }
 
 #BenWebsite {
-  position: absolute;
-  bottom: 0;
+	position: absolute;
+	bottom: 0;
+	z-index: 1000;
 }
 
 #Baker {
-  margin: auto;
-  vertical-align: middle;
+	margin: auto;
+	vertical-align: middle;
+	height: 300px;
+
+}
+
+#tutorialDiv {
+	width: 100%;
+	bottom: 0%;
+	position: absolute;
+	z-index: 100;
 
 }
 
 #whereToClick {
-  left: 300px;
-  top: 10px;
-  position: absolute;
+	text-align: center;
+	font-size: 500%;
 
 }
 
 #buttonsAndText {
-  margin: auto;
-  width: 50%;
-  text-align: center;
+	margin: auto;
+	width: 50%;
+	text-align: center;
 
 }
 
 #SideButtons {
-  position: absolute;
-  top: 0px;
-  right: 30px;
+	position: absolute;
+	top: 0px;
+	right: 30px;
 
 }
 
 #BuyFactory {
-  position: relative;
-  top: 30px;
+	position: relative;
+	top: 30px;
+	display: none;
 
 }
 
 #BuyMine {
-  position: relative;
-  top: 20px;
+	position: relative;
+	top: 20px;
+	display: none;
 
 }
 
 #BuyFarm {
-  position: relative;
-  top: 10px;
+	position: relative;
+	top: 10px;
 
 }
 
 button {
-  padding-left: 35px;
-  padding-right: 35px;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  border-radius: 30px;
-  display: block;
-  margin: auto;
-  border-color: #ff7f00;
+	padding-left: 35px;
+	padding-right: 35px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	border-radius: 30px;
+	display: block;
+	margin: auto;
+	border-color: #ff7f00;
 }
 
 #Baker {
-  margin-left: auto;
-  margin-right: auto;
+	margin-left: auto;
+	margin-right: auto;
+	position: relative;
 }
 
-  </style>
+	</style>
 
-  <body>
+	<body>
 
-    <div id="BreadBaker">
+		<div id="BreadBaker">
 
-      <button id="DarkTheme" onclick="darkTheme()">Dark theme</button>
+			<button id="DarkTheme" onclick="darkTheme()">Dark theme</button>
 
-      <button id="LightTheme" onclick="lightTheme()">Light theme</button>
+			<button id="LightTheme" onclick="lightTheme()">Light theme</button>
 
-      <p> <a href="/AWS-Website/clicker.html">Play BakeBread, a parody of cookie clicker!</a> </p>
+			<p> <a href="/AWS-Website/clicker.html">Play BakeBread, a parody of cookie clicker!</a> </p>
 
-    </div>
+		</div>
 
-    <div id="BenWebsite">
+		<div id="BenWebsite">
 
-      <p> <a href="http://bentitus13.com/">Also, see more talent at the website of the creator of BakeBread!</a> </p>
+			<p> <a href="http://bentitus13.com/">Also, see more talent at the website of the creator of BakeBread!</a> </p>
 
-    </div>
+		</div>
 
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <h1 id="CookieClickerHeader">Cookie Clicker!</h1>
+		<h1 id="CookieClickerHeader">Cookie Clicker!</h1>
 
-    <div id="CookieDiv">
+		<div id="tutorialDiv">
 
-      <img id="Baker" src="/games/cookie_clicker/cookie.png" onclick="addCookies()"/>
+			<p id="whereToClick">Click the cookie to get a cookie!</p>
 
-    </div>
+		</div>
 
-    <div id="buttonsAndText">
+		<div id="CookieDiv">
 
-      <p id="numberOfCookies">You have 0 cookies!</p>
+			<img id="Baker" src="/games/cookie_clicker/cookie.png" onclick="addCookies()"/>
 
-      <p id="howManyYouGet">You get 1 cookie per click!</p>
+		</div>
 
-      <p id="cookiesPerGrandma"></p>
+		<div id="buttonsAndText">
 
-      <p id="howManyFarms"></p>
+			<p id="numberOfCookies">You have 0 cookies!</p>
 
-      <p id="howManyMines"></p>
+			<p id="howManyYouGet">You get 1 cookie per click!</p>
 
-      <p id="howManyFactories"></p>
+			<p id="cookiesPerGrandma">You have 0 Grandmas!</p>
 
-    </div>
+			<p id="howManyFarms">You have 0 Farms!</p>
 
-    <button id="addAdd" onclick="moreCookiesPerClick()">Increase cookies per click</button>
+			<p id="howManyMines"></p>
 
-    <div id="SideButtons">
+			<p id="howManyFactories"></p>
 
-      <h1 id="GetAutoBakers">Get auto bakers!</h1>
+		</div>
 
-      <button id="BuyGrandma" onclick="addGrandma()">Buy a Grandma!</button>
+		<button id="addAdd" onclick="moreCookiesPerClick()">Increase cookies per click <br/> You need 110 cookies</button>
 
-      <button id="BuyFarm" onclick="addFarm()">Buy a Farm!</button>
+		<div id="SideButtons">
 
-      <button id="BuyMine" onclick="addMine()">Buy a Mine!</button>
+			<h1 id="GetAutoBakers">Get auto bakers!</h1>
 
-      <button id="BuyFactory" onclick="addFactory()">Buy a Factory!</button>
+			<button id="BuyGrandma" onclick="addGrandma()">Buy a Grandma!</button>
 
-    </div>
+			<button id="BuyFarm" onclick="addFarm()">Buy a Farm!</button>
 
-    <p id="cookiesYouNeedToPay"></p>
+			<button id="BuyMine" onclick="addMine()">Buy a Mine!</button>
 
-    <p id="cookiesYouNeedToGet"></p>
+			<button id="BuyFactory" onclick="addFactory()">Buy a Factory!</button>
 
-    <p id="x5"></p>
+		</div>
 
-    <p id="TMP"></p>
+		<p id="cookiesYouNeedToPay"></p>
 
-    <p id="whereToClick"></p>
+		<p id="cookiesYouNeedToGet"></p>
 
-    <p id="howManyYouGet"></p>
+		<p id="x5"></p>
 
-    <p id="costOfGrandma"></p>
+		<p id="TMP"></p>
 
-    <p id="cookiesPerGrandma"></p>
+		<p id="howManyYouGet"></p>
 
-    <p id="numberOfGrandmas"></p>
+		<p id="costOfGrandma"></p>
 
-    <p id="randomNumber"></p>
+		<p id="cookiesPerGrandma"></p>
 
-    <script>
+		<p id="numberOfGrandmas"></p>
 
+		<p id="randomNumber"></p>
+
+		<script onload="setup()">
 
 var cookies = 0;
 var cookiesPerClick = 1;
-var cost = 2;
+var cost = 110;
 var add = 2
 var fibonacci1 = 1;
 var fibonacci2 = 0;
 var currentFibonacci;
+var tutorialVar = 0;
 
 var cookiesUntilUpgrade = cost - cookies;
 var shownButton = 0;
@@ -209,336 +227,343 @@ var isGrandmaRunning = 0;
 var numGrandma = 0;
 var grandmaCost = 10;
 
-var isFarmRunning = 0
+var isFarmRunning = 0;
 var numFarm = 0
 var farmCost = 100
 
-var isMineRunning = 0
+var isMineRunning = 0;
 var numMine = 0
 var mineCost = 1100
 
-var isFactoryRunning = 0
+var isFactoryRunning = 0;
 var numFactory = 0
 var factoryCost = 12000
 
-
+function setup() {
 document.getElementById("Baker").style.height='300px';
 document.getElementById("BuyGrandma").style.background='#000000';
 document.getElementById("BuyGrandma").style.color='#000000';
 document.getElementById("addAdd").style.background='#CCCCCC';
-document.getElementById("addAdd").style.visibility='hidden';
+document.getElementById("addAdd").style.visibility='visible';
 document.getElementById("whereToClick").innerHTML = "Click the cookie to get a cookie!";
-document.getElementByID("addGrandma").style.color = "FFFFFF";
-document.getElementByID("addFarm").innerHTML.style.color = "FFFFFF";
-document.getElementByID("addMine").style.color = "FFFFFF";
-document.getElementByID("addFactory").style.color = "FFFFFF";
+document.getElementById("addFarm").innerHTML.style.color = "#FFFFFF";
+document.getElementById("addMine").style.color = "#FFFFFF";
+document.getElementById("BuyFactory").style.color = "#FFFFFF";
+document.getElementById("BuyFactory").style.visibility = "hidden";
+document.getElementByID("addAdd").innerHTML = "Increase cookies per click <br/> You need " + cost + " cookies";
+document.getElementById("BuyFarm").style.background='#000000';
+document.getElementById("BuyFarm").style.color='#ffffff';
+}
 
 function darkTheme() {
-document.getElementById("GetAutoBakers").style.color = "#f442e2"
-document.body.style.backgroundColor = "#000000";
-document.getElementById("howManyMines").style.color = "#429ef4"
-document.getElementById("numberOfCookies").style.color = "#429ef4";
-document.getElementById("howManyFarms").style.color = "#429ef4"
-document.getElementById("cookiesPerGrandma").style.color = "#429ef4";
-document.getElementById("howManyYouGet").style.color = "#429ef4";
-document.getElementById("howManyFactories").style.color = "#429ef4"
-document.getElementById("CookieClickerHeader").style.color = "red"
-document.getElementById("whereToClick").style.color = "#a126ff";
+	document.getElementById("GetAutoBakers").style.color = "#f442e2"
+	document.body.style.backgroundColor = "#000000";
+	document.getElementById("howManyMines").style.color = "#429ef4"
+	document.getElementById("numberOfCookies").style.color = "#429ef4";
+	document.getElementById("howManyFarms").style.color = "#429ef4"
+	document.getElementById("cookiesPerGrandma").style.color = "#429ef4";
+	document.getElementById("howManyYouGet").style.color = "#429ef4";
+	document.getElementById("howManyFactories").style.color = "#429ef4"
+	document.getElementById("CookieClickerHeader").style.color = "red"
+	document.getElementById("whereToClick").style.color = "#a126ff";
 }
 
 function lightTheme() {
-document.getElementById("GetAutoBakers").style.color = "#000000"
-document.body.style.backgroundColor = "#ffffff";
-document.getElementById("howManyMines").style.color = "#000000"
-document.getElementById("numberOfCookies").style.color = "#000000";
-document.getElementById("howManyFarms").style.color = "#000000"
-document.getElementById("cookiesPerGrandma").style.color = "#000000";
-document.getElementById("howManyYouGet").style.color = "#000000";
-document.getElementById("howManyFactories").style.color = "#000000"
-document.getElementById("CookieClickerHeader").style.color = "black"
-document.getElementById("whereToClick").style.color = "black";
+	document.getElementById("GetAutoBakers").style.color = "#000000"
+	document.body.style.backgroundColor = "#ffffff";
+	document.getElementById("howManyMines").style.color = "#000000"
+	document.getElementById("numberOfCookies").style.color = "#000000";
+	document.getElementById("howManyFarms").style.color = "#000000"
+	document.getElementById("cookiesPerGrandma").style.color = "#000000";
+	document.getElementById("howManyYouGet").style.color = "#000000";
+	document.getElementById("howManyFactories").style.color = "#000000"
+	document.getElementById("CookieClickerHeader").style.color = "black"
+	document.getElementById("whereToClick").style.color = "black";
+}
+
+
+function updateDisplay() {
+
+
+	//  document.getElementById("TMP").innerHTML = String()process.cwd()
+	if (cookies == 1) {
+		document.getElementById("numberOfCookies").innerHTML = "You have 1 cookie!"
+	}
+	else {
+		document.getElementById("numberOfCookies").innerHTML = "You have " + cookies + " cookies!";
+	}
+	document.getElementById("cookiesPerGrandma").innerHTML = "You have " + numGrandma + " Grandmas!";
+	document.getElementById("BuyGrandma").innerHTML = "Buy a grandma! <br/> You need to pay " + grandmaCost + " cookies!";
+	document.getElementById("BuyFarm").innerHTML = "Buy a farm! <br/> You need to pay " + farmCost + " cookies!";
+	document.getElementById("BuyMine").innerHTML = "Buy a mine! <br/> You need to pay " + mineCost + " cookies!";
+	document.getElementById("BuyFactory").innerHTML = "Buy a Factory! <br/> You need to pay " + factoryCost + " cookies!";
+	document.getElementById("howManyYouGet").innerHTML = "You get " + cookiesPerClick + " cookies per click!";
+	document.getElementById("howManyFarms").innerHTML = "You have " + numFarm + " Farms!";
+	document.getElementById("howManyMines").innerHTML = "You have " + numMine + " Mines!";
+	document.getElementById("howManyFactories").innerHTML = "You have " + numFactory + " Factories!";
+	document.getElementById("addAdd").innerHTML = "Increase cookies per click <br/> You need " + cost + " cookies";
+
+	if (isGrandmaRunning == false){
+		document.getElementById("BuyMine").style.visibility="hidden";
+		document.getElementById("howManyMines").style.visibility="hidden";
+
+	}
+
+	else {
+		document.getElementById("BuyMine").style.visibility="visible";
+		document.getElementById("howManyMines").style.visibility="visible";
+
+	}
+
+
+
+
+	if (isFarmRunning == false){
+		document.getElementById("BuyFactory").style.visibility="hidden";
+		document.getElementById("howManyFactories").style.visibility="hidden";
+
+	}
+
+	else {
+		document.getElementById("BuyFactory").style.visibility="visible";
+		document.getElementById("howManyFactories").style.visibility="visible";
+
+	}
+
+
+
+
+	if (cookies >= cost){
+		document.getElementById("addAdd").style.background='#ff7f00';
+	}
+	else{
+		document.getElementById("addAdd").style.background='#CCCCCC';
+	}
+
+
+
+	if (cookies >= grandmaCost){
+		document.getElementById("BuyGrandma").style.background='#ff7f00';
+		document.getElementById("BuyGrandma").style.color='#000000';
+
+	}
+	else {
+		document.getElementById("BuyGrandma").style.background='#CCCCCC'
+		document.getElementById("BuyGrandma").style.color='#000000';
+	}
+
+	if((isGrandmaRunning == 0) && (cookies <= grandmaCost)){
+		document.getElementById("BuyGrandma").style.background='#000000'
+		document.getElementById("BuyGrandma").style.color='#ffffff';
+	}
+
+
+
+
+
+	if (cookies >= farmCost){
+		document.getElementById("BuyFarm").style.background='#ff7f00';
+		document.getElementById("BuyFarm").style.color='#000000'
+
+	}
+	else {
+		document.getElementById("BuyFarm").style.background='#CCCCCC'
+		document.getElementById("BuyFarm").style.color='#000000'
+	}
+
+	if((isFarmRunning == 0) && (cookies <= farmCost)){
+		document.getElementById("BuyFarm").style.background='#000000'
+		document.getElementById("BuyFarm").style.color='#ffffff'
+	}
+
+
+
+
+	if (cookies >= mineCost){
+		document.getElementById("BuyMine").style.background='#ff7f00';
+		document.getElementById("BuyMine").style.color='#000000'
+
+	}
+	else {
+		document.getElementById("BuyMine").style.background='#CCCCCC'
+		document.getElementById("BuyMine").style.color='#000000'
+	}
+
+	if((isMineRunning == 0) && (cookies <= mineCost)){
+		document.getElementById("BuyMine").style.background='#000000'
+		document.getElementById("BuyMine").style.color='#ffffff'
+	}
+
+
+
+
+
+
+
+	if (cookies >= factoryCost){
+		document.getElementById("BuyFactory").style.background='#ff7f00';
+		document.getElementById("BuyFactory").style.color='#000000'
+
+	}
+	else {
+		document.getElementById("BuyFactory").style.background='#CCCCCC'
+		document.getElementById("BuyFactory").style.color='#000000'
+	}
+
+	if((isFactoryRunning == 0) && (cookies <= factoryCost)){
+		document.getElementById("BuyFactory").style.background='#000000'
+		document.getElementById("BuyFactory").style.color='#ffffff'
+	}
+
+
+
+
+
+
+	//if (cost > cookies) {
+	//document.getElementById("cookiesYouNeedToGet").innerHTML = "You need to get " + cookiesUntilUpgrade + " cookies until you can upgrade!"
+	//}
+	//else {
+
+	//document.getElementById("cookiesYouNeedToGet").innerHTML = "You can upgrade now because you have enough cookies!"
+
+	//}
+
+}
+
+function callUpdateDisplay() {
+	updateDisplay();
+	setTimeout(function(){
+		callUpdateDisplay();
+	}, 50);
+
+
 }
 
 updateDisplay();
 callUpdateDisplay();
 
-function callUpdateDisplay() {
-  updateDisplay();
-  setTimeout(function(){
-    callUpdateDisplay();
-  }, 50);
-
-
-}
-
-
 function getNextFibonacci() {
-  currentFibonacci = fibonacci1 + fibonacci2
-    fibonacci2 = fibonacci1
-    fibonacci1 = currentFibonacci
-    return currentFibonacci
+	currentFibonacci = fibonacci1 + fibonacci2
+	fibonacci2 = fibonacci1
+	fibonacci1 = currentFibonacci
+	return currentFibonacci
 
 }
 
 function getFibonacciByNumber(num) {
-  if(num == 1){
-    return 1;
-  }
-  if(num == 2){
-    return 2;
-  }
-  return getFibonacciByNumber(num-1) + getFibonacciByNumber(num-2);
+	if(num == 1){
+		return 1;
+	}
+	if(num == 2){
+		return 2;
+	}
+	return getFibonacciByNumber(num-1) + getFibonacciByNumber(num-2);
 
 }
 
 function testChancesGrandma() {
 
-  var randomNumberGrandma = Math.floor(Math.random()*10000)
+	var randomNumberGrandma = Math.floor(Math.random()*10000)
 
-    if (randomNumberGrandma == 2) {
-      cookies = cookies * 5
-        sayYouGotCookies();
-    }
+	if (randomNumberGrandma == 2) {
+		cookies = cookies * 5
+		sayYouGotCookies();
+	}
 
 }
 
 
 function testChances() {
 
-  var randomNumber = Math.floor(Math.random()*1000)
+	var randomNumber = Math.floor(Math.random()*1000)
 
-    if (randomNumber == 2) {
-      cookies = cookies * 2
-        sayYouGotCookies();
-    }
+	if (randomNumber == 2) {
+		cookies = cookies * 2
+		sayYouGotCookies();
+	}
 
 }
 
 
 function sayYouGotCookies() {
-  document.getElementById("x5").innerHTML = "You just got 2 times the amount of cookies!"
-    document.getElementById("x5").style.color='#915e00';
-  setTimeout(function(){
-    document.getElementById("x5").innerHTML = ""
-  }, 5000);
+	document.getElementById("x5").innerHTML = "You just got 2 times the amount of cookies!"
+	document.getElementById("x5").style.color='#915e00';
+	setTimeout(function(){
+		document.getElementById("x5").innerHTML = ""
+	}, 5000);
 
 
 }
 
 
 
-function updateDisplay() {
 
-
-  //  document.getElementById("TMP").innerHTML = String()process.cwd()
-  if (cookies == 1) {
-    document.getElementById("numberOfCookies").innerHTML = "You have 1 cookie!"
-  }
-  else {
-    document.getElementById("numberOfCookies").innerHTML = "You have " + cookies + " cookies!";
-  }
-  document.getElementById("cookiesPerGrandma").innerHTML = "You have " + numGrandma + " Grandmas!";
-  document.getElementById("BuyGrandma").innerHTML = "Buy a grandma! <br/> You need to pay " + grandmaCost + " cookies!";
-  document.getElementById("BuyFarm").innerHTML = "Buy a farm! <br/> You need to pay " + farmCost + " cookies!";
-  document.getElementById("BuyMine").innerHTML = "Buy a mine! <br/> You need to pay " + mineCost + " cookies!";
-  document.getElementById("BuyFactory").innerHTML = "Buy a Factory! <br/> You need to pay " + factoryCost + " cookies!";
-  document.getElementById("howManyYouGet").innerHTML = "You get " + cookiesPerClick + " cookies per click!";
-  document.getElementById("howManyFarms").innerHTML = "You have " + numFarm + " Farms!"
-    document.getElementById("howManyMines").innerHTML = "You have " + numMine + " Mines!"
-    document.getElementById("howManyFactories").innerHTML = "You have " + numFactory + " Factories!"
-    //document.getElementById("addAdd").innerHTML = "Increase cookies per click <br/> You need " + (cost - cookies) +" cookies"
-
-    if (isGrandmaRunning == false){
-      document.getElementById("BuyMine").style.visibility="hidden";
-      document.getElementById("howManyMines").style.visibility="hidden";
-
-    }
-
-    else {
-      document.getElementById("BuyMine").style.visibility="visible";
-      document.getElementById("howManyMines").style.visibility="visible";
-
-    }
-
-
-
-
-  if (isFarmRunning == false){
-    document.getElementById("BuyFactory").style.visibility="hidden";
-    document.getElementById("howManyFactories").style.visibility="hidden";
-
-  }
-
-  else {
-    document.getElementById("BuyFactory").style.visibility="visible";
-    document.getElementById("howManyFactories").style.visibility="visible";
-
-  }
-
-
-
-
-  if (cookies >= cost){
-    document.getElementById("addAdd").style.background='#ff7f00';
-  }
-  else{
-    document.getElementById("addAdd").style.background='#CCCCCC';
-  }
-
-
-
-  if (cookies >= grandmaCost){
-    document.getElementById("BuyGrandma").style.background='#ff7f00';
-    document.getElementById("BuyGrandma").style.color='#000000';
-
-  }
-  else {
-    document.getElementById("BuyGrandma").style.background='#CCCCCC'
-    document.getElementById("BuyGrandma").style.color='#000000';
-  }
-
-  if((isGrandmaRunning == 0) && (cookies <= grandmaCost)){
-    document.getElementById("BuyGrandma").style.background='#000000'
-    document.getElementById("BuyGrandma").style.color='#ffffff';
-  }
-
-
-
-
-
-  if (cookies >= farmCost){
-    document.getElementById("BuyFarm").style.background='#ff7f00';
-    document.getElementById("BuyFarm").style.color='#000000'
-
-  }
-  else {
-    document.getElementById("BuyFarm").style.background='#CCCCCC'
-    document.getElementById("BuyFarm").style.color='#000000'
-  }
-
-  if((isFarmRunning == 0) && (cookies <= farmCost)){
-    document.getElementById("BuyFarm").style.background='#000000'
-    document.getElementById("BuyFarm").style.color='#ffffff'
-  }
-
-
-
-
-  if (cookies >= mineCost){
-    document.getElementById("BuyMine").style.background='#ff7f00';
-    document.getElementById("BuyMine").style.color='#000000'
-
-  }
-  else {
-    document.getElementById("BuyMine").style.background='#CCCCCC'
-    document.getElementById("BuyMine").style.color='#000000'
-  }
-
-  if((isMineRunning == 0) && (cookies <= mineCost)){
-    document.getElementById("BuyMine").style.background='#000000'
-    document.getElementById("BuyMine").style.color='#ffffff'
-  }
-
-
-
-
-
-
-
-  if (cookies >= factoryCost){
-    document.getElementById("BuyFactory").style.background='#ff7f00';
-    document.getElementById("BuyFactory").style.color='#000000'
-
-  }
-  else {
-    document.getElementById("BuyFactory").style.background='#CCCCCC'
-    document.getElementById("BuyFactory").style.color='#000000'
-  }
-
-  if((isFactoryRunning == 0) && (cookies <= factoryCost)){
-    document.getElementById("BuyFactory").style.background='#000000'
-    document.getElementById("BuyFactory").style.color='#ffffff'
-  }
-
-
-
-
-
-
-  //if (cost > cookies) {
-  //document.getElementById("cookiesYouNeedToGet").innerHTML = "You need to get " + cookiesUntilUpgrade + " cookies until you can upgrade!"
-  //}
-  //else {
-
-  //document.getElementById("cookiesYouNeedToGet").innerHTML = "You can upgrade now because you have enough cookies!"
-
-  //}
-
-}
+updateDisplay();
 
 function runGrandma() {
 
-  setTimeout(function(){
-    cookies = Math.round(cookies + (numGrandma * 1));
-    runGrandma();
-    updateDisplay();
-    testChancesGrandma();
-  }, 10000);
+	setTimeout(function(){
+		cookies = Math.round(cookies + (numGrandma * 1));
+		runGrandma();
+		testChancesGrandma();
+		updateDisplay();
+	}, 10000);
 
 
 }
 
 function addGrandma() {
 
-  if (cookies >= grandmaCost) {
-    if(isGrandmaRunning == 1){
-      //Increase something or other
-      numGrandma = numGrandma + 1
-        cookies = cookies - grandmaCost;
-      grandmaCost = Math.round(1.15*grandmaCost);
-      document.getElementById("cookiesPerGrandma").innerHTML = "You have " + numGrandma + " grandmas!"
-    }
-    else{
-      runGrandma();
-      isGrandmaRunning = 1
-        numGrandma = 1
-        cookies = cookies - grandmaCost
-        grandmaCost = Math.round(1.15*grandmaCost);
-    }
-    updateDisplay();
+	if (cookies >= grandmaCost) {
+		if(isGrandmaRunning == 1){
+			//Increase something or other
+			numGrandma = numGrandma + 1
+			cookies = cookies - grandmaCost;
+			grandmaCost = Math.round(1.15*grandmaCost);
+			document.getElementById("cookiesPerGrandma").innerHTML = "You have " + numGrandma + " grandmas!"
+		}
+		else{
+			runGrandma();
+			isGrandmaRunning = 1
+			numGrandma = 1
+			cookies = cookies - grandmaCost
+			grandmaCost = Math.round(1.15*grandmaCost);
+		}
+		updateDisplay();
 
-  }
+	}
 
 
 }
 
 function addFarm() {
-  if (cookies >= farmCost) {
-    if(isFarmRunning == 1){
-      numFarm = numFarm + 1
-        cookies = cookies - farmCost;
-      farmCost = Math.round(1.15*farmCost);
-      updateDisplay();
-      document.getElementById("howManyFarms").innerHTML = "You have " + numFarm + " Farms!"
-    }
-    else{
-      runFarm();
-      isFarmRunning = 1
-        numFarm = 1
-        cookies = cookies - farmCost
-        farmCost = Math.round(1.15*farmCost);
-      updateDisplay();
-    }
-  }
+	if (cookies >= farmCost) {
+		if(isFarmRunning == 1){
+			numFarm = numFarm + 1
+			cookies = cookies - farmCost;
+			farmCost = Math.round(1.15*farmCost);
+			document.getElementById("howManyFarms").innerHTML = "You have " + numFarm + " Farms!"
+			updateDisplay();
+		}
+		else{
+			runFarm();
+			isFarmRunning = 1
+			numFarm = 1
+			cookies = cookies - farmCost
+			farmCost = Math.round(1.15*farmCost);
+			updateDisplay();
+		}
+	}
 }
 
 function runFarm() {
 
-  setTimeout(function(){
-    cookies = Math.round(cookies + (numFarm * 1))
-      updateDisplay();
-    runFarm();
-  }, 1000);
+	setTimeout(function(){
+		cookies = Math.round(cookies + (numFarm * 1))
+		updateDisplay();
+		runFarm();
+	}, 1000);
 }
 
 
@@ -549,32 +574,32 @@ function runFarm() {
 
 
 function addMine() {
-  if (cookies >= mineCost) {
-    if(isMineRunning == 1){
-      numMine = numMine + 1
-        cookies = cookies - mineCost;
-      mineCost = Math.round(1.15*mineCost);
-      updateDisplay();
-      document.getElementById("howManyMines").innerHTML = "You have " + numMine + " Mines!"
-    }
-    else{
-      runMine();
-      isMineRunning = 1
-        numMine = 1
-        cookies = cookies - mineCost
-        mineCost = Math.round(1.15*mineCost);
-      updateDisplay();
-    }
-  }
+	if (cookies >= mineCost) {
+		if(isMineRunning == 1){
+			numMine = numMine + 1
+			cookies = cookies - mineCost;
+			mineCost = Math.round(1.15*mineCost);
+			document.getElementById("howManyMines").innerHTML = "You have " + numMine + " Mines!"
+			updateDisplay();
+		}
+		else{
+			runMine();
+			isMineRunning = 1
+			numMine = 1
+			cookies = cookies - mineCost
+			mineCost = Math.round(1.15*mineCost);
+			updateDisplay();
+		}
+	}
 }
 
 function runMine() {
 
-  setTimeout(function(){
-    cookies = Math.round(cookies + (numMine * 1))
-      updateDisplay();
-    runMine();
-  }, 125);
+	setTimeout(function(){
+		cookies = Math.round(cookies + (numMine * 1))
+		updateDisplay();
+		runMine();
+	}, 125);
 }
 
 
@@ -585,52 +610,61 @@ function runMine() {
 
 
 function addFactory() {
-  if (cookies >= factoryCost) {
-    if(isFactoryRunning == 1){
-      numFactory = numFactory + 1
-        cookies = cookies - factoryCost;
-      factoryCost = Math.round(1.15*factoryCost);
-      updateDisplay();
-      document.getElementById("howManyFactories").innerHTML = "You have " + numFactory + " Factories!"
-    }
-    else{
-      runFactory();
-      isFactoryRunning = 1
-        numFactory = 1
-        cookies = cookies - factoryCost
-        factoryCost = Math.round(1.15*factoryCost);
-      updateDisplay();
-    }
-  }
+	if (cookies >= factoryCost) {
+		if(isFactoryRunning == 1){
+			numFactory = numFactory + 1
+			cookies = cookies - factoryCost;
+			factoryCost = Math.round(1.15*factoryCost);
+			document.getElementById("howManyFactories").innerHTML = "You have " + numFactory + " Factories!"
+			updateDisplay();
+		}
+		else{
+			runFactory();
+			isFactoryRunning = 1
+			numFactory = 1
+			cookies = cookies - factoryCost
+			factoryCost = Math.round(1.15*factoryCost);
+			updateDisplay();
+		}
+	}
 }
 
 function runFactory() {
 
-  setTimeout(function(){
-    cookies = Math.round(cookies + (numFactory * 13))
-      updateDisplay();
-    runFactory();
-  }, 250);
-}
-
-
-function addCookies() {
-  cookies = cookies + cookiesPerClick;
-  document.getElementById("Baker").style.height='290px';
-  setTimeout(function(){
-    document.getElementById("Baker").style.height='300px';
-  }, 100);
-  updateDisplay();
-  testChances();
-  testCookiesPerClick();
-
-
-
+	setTimeout(function(){
+		cookies = Math.round(cookies + (numFactory * 13))
+		updateDisplay();
+		runFactory();
+	}, 250);
 }
 
 function moreCookiesPerClick() {
-  hello
-}
-    </script>
+	if (cookies - cost > 0) {
+		cookiesPerClick = cookiesPerClick + 1;
+		cookies = cookies - cost;
+		cost = Math.round(cost * 1.5);
+		updateDisplay();
 
-  </body>
+	}
+}
+
+function addCookies() {
+	cookies = cookies + cookiesPerClick;
+	document.getElementById("Baker").style.height='290px';
+	document.getElementById("Baker").style.top='5px';
+	setTimeout(function(){
+		document.getElementById("Baker").style.height='300px';
+		document.getElementById("Baker").style.top='0px';
+	}, 100);
+	if (tutorialVar == 0) {
+		tutorialVar = 1;
+		document.getElementById("whereToClick").style.visibility = "hidden";
+	}
+	testChances();
+	updateDisplay();
+
+}
+
+		</script>
+
+	</body>
