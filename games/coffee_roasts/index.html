@@ -12,14 +12,23 @@
 	opacity: 75%;
 }
 
-#Menu {
+#Menudiv {
 	position: absolute;
-	width: 20%;
-	height: 25%;
+	width: 300px;
+	height: 240px;
 	right: 10%;
 	top: 4%;
+	z-index: 100;
 
 }
+
+#Menu {
+	position: relative;
+	width: 95%;
+	height: 95%;
+	text-align: center;
+}
+
 
 #Money {
 	color: #00AA00;
@@ -27,12 +36,18 @@
 
 }
 
-#counter {
+#counterdiv {
 	position: absolute;
 	width: 52%;
 	height: 65;
 	bottom: 2%;
 	right: 4%;
+
+}
+
+#counter {
+	width: 90%;
+	height: 90%;
 
 }
 
@@ -57,10 +72,14 @@
 
 	<body>
 
-		<img id="Menu" src="/games/coffee_roasts/WhiteBoardMenu.png" onclick="levelup()"/>
-		<img id="counter" src="/games/coffee_roasts/Counter.png"/>
+		<div id="Menudiv" onclick="levelup()">
+			<img id="Menu" class="center" src="/games/coffee_roasts/WhiteBoardMenu.png" onclick="levelup()"/>
+		</div>
+		<div id="counterdiv">
+			<img id="counter" src="/games/coffee_roasts/Counter.png"/>
+		</div>
 		<div id=tutorialDiv onclick="hideScreen()">
-			<p id="Tutorial">Hello! Welcome to coffee roasts! The basic idea of this game is every day customers will come buy and buy a coffee. When that happens you will have to make them whatever they order. You will also have to pay $20 of rent everyday, so make sure to have enough money! You will have $100 to start off with. Finally, when you have enough money you can click on the menu to unlock a new type of coffee to make!<br><br>Click anywhere to continue.</p>
+		<p id="Tutorial">Hello! Welcome to coffee roasts! The basic idea of this game is every day customers will come buy and buy a coffee. When that happens you will have to make them whatever they order. You will also have to pay $20 of rent everyday, so make sure to have enough money! You will have $100 to start off with. Finally, when you have enough money you can click on the menu to unlock a new type of coffee to make!<br><br>Click anywhere to continue.</p>
 		</div>
 		<img id="BigBlackAnnoyingScreen" src="/games/coffee_roasts/BlackScreen.png" onClick="hideScreen()"/>
 

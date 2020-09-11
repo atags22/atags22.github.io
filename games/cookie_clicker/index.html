@@ -89,14 +89,12 @@ h1 {
 #BuyFactory {
 	position: relative;
 	top: 30px;
-	display: none;
 
 }
 
 #BuyMine {
 	position: relative;
 	top: 20px;
-	display: none;
 
 }
 
@@ -248,6 +246,7 @@ document.getElementById("addAdd").style.visibility='visible';
 document.getElementById("whereToClick").innerHTML = "Click the cookie to get a cookie!";
 document.getElementById("addFarm").innerHTML.style.color = "#FFFFFF";
 document.getElementById("addMine").style.color = "#FFFFFF";
+document.getElementById("BuyMine").style.visibility = "visible";
 document.getElementById("BuyFactory").style.color = "#FFFFFF";
 document.getElementById("BuyFactory").style.visibility = "hidden";
 document.getElementByID("addAdd").innerHTML = "Increase cookies per click <br/> You need " + cost + " cookies";
@@ -522,8 +521,10 @@ function addGrandma() {
 			cookies = cookies - grandmaCost;
 			grandmaCost = Math.round(1.15*grandmaCost);
 			document.getElementById("cookiesPerGrandma").innerHTML = "You have " + numGrandma + " grandmas!"
+			document.getElementById("BuyMine").style.visibility = "visible";
 		}
 		else{
+			document.getElementById("BuyMine").style.visibility = "visible";
 			runGrandma();
 			isGrandmaRunning = 1
 			numGrandma = 1
