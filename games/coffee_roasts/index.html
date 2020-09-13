@@ -38,16 +38,12 @@
 
 #counterdiv {
 	position: absolute;
-	width: 52%;
-	height: 65;
 	bottom: 2%;
 	right: 4%;
 
 }
 
 #counter {
-	width: 90%;
-	height: 90%;
 
 }
 
@@ -68,6 +64,14 @@
 	color: #FFFFFF;
 
 }
+
+#Espressodiv {
+	position: absolute;
+	top: 20%;
+	left: 25%;
+
+}
+
 	</style>
 
 	<body>
@@ -76,7 +80,10 @@
 			<img id="Menu" class="center" src="/games/coffee_roasts/WhiteBoardMenu.png" onclick="levelup()"/>
 		</div>
 		<div id="counterdiv">
-			<img id="counter" src="/games/coffee_roasts/Counter.png"/>
+			<img id="counter" src="/games/coffee_roasts/CounterCoffee0.png"/>
+		</div>
+		<div id="Espressodiv">
+			<img id="EspressoMaker" src="/games/coffee_roasts/EspressoMaker.png" onclick="BrewEspresso()">
 		</div>
 		<div id=tutorialDiv onclick="hideScreen()">
 		<p id="Tutorial">Hello! Welcome to coffee roasts! The basic idea of this game is every day customers will come buy and buy a coffee. When that happens you will have to make them whatever they order. You will also have to pay $20 of rent everyday, so make sure to have enough money! You will have $100 to start off with. Finally, when you have enough money you can click on the menu to unlock a new type of coffee to make!<br><br>Click anywhere to continue.</p>
@@ -84,23 +91,40 @@
 		<img id="BigBlackAnnoyingScreen" src="/games/coffee_roasts/BlackScreen.png" onClick="hideScreen()"/>
 
 		<p id="Money">$100</p>
+		<p id="EspressoStock">0</p>
 
 		<script>
 
 var dollars = 100;
 var level = 1;
 var levelupprice = 500
+var espressoStock = 0;
+var EspressoLimit = 4;
 
 document.getElementById("Money").innerHTML = "$" + dollars;
+document.getElementById("EspressoStock").innerHTML = espressoStock;
 
 function updateDisplay() {
 document.getElementById("Money").innerHTML = "$" + dollars;
+document.getElementById("EspressoStock").innerHTML = espressoStock;
+
 }
 
 function hideScreen() {
 		document.getElementById("BigBlackAnnoyingScreen").style.visibility = "hidden";
 		document.getElementById("tutorialDiv").style.visibility = "hidden";
 		document.getElementById("Tutorial").style.visibility = "hidden";
+}
+
+function BrewEspresso() {
+	if (espressoStock < EspressoLimit) {
+		espressoStock++;
+		document.getElementById("counter").src = "/games/coffee_roasts/CounterCoffee" + espressoStock + ".png";
+	}
+	else {
+		alert("You can't brew an espresso now. You already have 4 stocked up, which is the limit. Sell them first!")
+	}
+	updateDisplay();
 }
 
 function levelup() {
